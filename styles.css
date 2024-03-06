@@ -8,10 +8,18 @@
   html {
     font-family: "Inter", sans-serif;
   }
-}
+  ul {
+      list-style: disc;
+  }
+};
 
 p a {
     font-weight: bold;
     text-decoration: underline;
     @apply text-lg md:text-xl lg:text-2xl text-orange-500
 }
+
+:root {
+    --navbar-height: 56px;
+    --bg-card: #78716c1a
+};

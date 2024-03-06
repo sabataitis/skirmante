@@ -2,17 +2,16 @@ import React from "react";
 
 export const Container = ({
   children,
-  size = "medium",
-  width = "large",
+  size = "default",
   className = "",
 }) => {
   const sizes = {
-    medium: "max-w-5xl py-12 sm:py-14 px-6 sm:px-8",
-    large: "max-w-screen-2xl py-22 sm:py-24 px-2 sm:px-6",
-    default: "max-w-5xl py-12 sm:py-14 px-6 sm:px-8",
+    medium: "max-w-screen-xl py-12 sm:py-14 px-6",
+    large: "max-w-screen-2xl py-12 sm:py-14 px-2",
+    default: "py-12 sm:py-14 px-6",
   };
 
   return (
-    <div className={`mx-auto ${sizes[size]} ${className}`}>{children}</div>
+    <section className={`${sizes[size]} ${className}`}>{children}</section>
   );
 };

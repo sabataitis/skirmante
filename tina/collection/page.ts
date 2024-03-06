@@ -1,97 +1,8 @@
-import type { Collection, Template } from "tinacms";
-import { heroBlockSchema } from "../../components/blocks/hero";
-import { contentBlockSchema } from "../../components/blocks/content";
+import type { Collection } from "tinacms";
 import { testimonialBlockSchema } from "../../components/blocks/testimonial";
 import { featureBlockSchema } from "../../components/blocks/features";
-
-export const heroTemplateSchema: Template = {
-  name: "heroTemplate",
-  label: "Hero Template",
-  ui: {
-    previewSrc: "/blocks/hero.png",
-    defaultItem: {
-      heading: "Here is the heading",
-      subheading: "Here is the sub heading",
-      text: "Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.",
-    },
-  },
-  fields: [
-    {
-      type: "string",
-      label: "Heading",
-      name: "heading",
-    },
-    {
-      type: "string",
-      label: "Sub Heading",
-      name: "subheading",
-    },
-    {
-      label: "Text",
-      name: "text",
-      type: "rich-text",
-    },
-    {
-      label: "Actions",
-      name: "actions",
-      type: "object",
-      list: true,
-      ui: {
-        defaultItem: {
-          label: "Action Label",
-          type: "button",
-          style: "primary",
-          icon: true,
-          link: "/",
-        },
-        itemProps: (item) => ({ label: item.label }),
-      },
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Type",
-          name: "type",
-          type: "string",
-          options: [
-            { label: "Prmary", value: "primary" },
-            { label: "Secondary", value: "secondary" },
-          ],
-        },
-        {
-          label: "Icon",
-          name: "icon",
-          type: "boolean",
-        },
-        {
-          label: "Link",
-          name: "link",
-          type: "string",
-        },
-      ],
-    },
-    {
-      type: "object",
-      label: "Image",
-      name: "image",
-      fields: [
-        {
-          name: "src",
-          label: "Image Source",
-          type: "image",
-        },
-        {
-          name: "alt",
-          label: "Alt Text",
-          type: "string",
-        },
-      ],
-    },
-  ],
-};
+import { heroTemplateSchema } from "../../components/blocks/hero-template";
+import { cardTemplateBlockSchema } from "../../components/blocks/card-template";
 
 const Page: Collection = {
   label: "Pages",
@@ -102,9 +13,9 @@ const Page: Collection = {
       if (document._sys.filename === "home") {
         return `/`;
       }
-      if (document._sys.filename === "about") {
-        return `/about`;
-      }
+      // if (document._sys.filename === "about") {
+      //   return `/about`;
+      // }
       return undefined;
     },
   },
@@ -127,12 +38,11 @@ const Page: Collection = {
         visualSelector: true,
       },
       templates: [
-        heroBlockSchema,
         heroTemplateSchema,
+        cardTemplateBlockSchema,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         featureBlockSchema,
-        contentBlockSchema,
         testimonialBlockSchema,
       ],
     },

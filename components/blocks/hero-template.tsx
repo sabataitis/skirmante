@@ -3,38 +3,18 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
 import { Container } from "../util/container";
 import AppImage from "../util/image";
-import { Actions } from "../util/actions";
-
-const Heading = ({ data }: { data: PageBlocksHeroTemplate }) => {
-  return (
-    data.heading && (
-      <h1
-        className="text-3xl text-center sm:text-left font-bold md:text-6xl uppercase"
-        data-tina-field={tinaField(data, "heading")}
-      >
-        {data.heading}
-      </h1>
-    )
-  );
-};
-
-const SubHeading = ({ data }: { data: PageBlocksHeroTemplate }) => {
-  return (
-    data.subheading && (
-      <h2
-        className="text-md sm:text-left text-center sm:text-2xl font-extralight"
-        data-tina-field={tinaField(data, "subheading")}
-      >
-        {data.subheading}
-      </h2>
-    )
-  );
-};
+import { Action, Actions } from "../util/actions";
+import { Heading } from "../util/heading";
+import { Template } from "tinacms";
+import styles from "../styles/hero-template.module.css";
 
 export const Txt = ({ data }: { data: PageBlocksHeroTemplate }) => {
   return (
     data.text && (
-      <div data-tina-field={tinaField(data, "text")} className="prose-lg">
+      <div
+        data-tina-field={tinaField(data, "text")}
+        className="sm:prose-2xl prose-xl"
+      >
         <TinaMarkdown content={data.text} />
       </div>
     )
@@ -65,23 +45,125 @@ export const Img = ({ data }: { data: PageBlocksHeroTemplate }) => {
 };
 
 export const HeroTemplate = ({ data }: { data: PageBlocksHeroTemplate }) => {
+  const actions = data.actions as Action[];
+
   return (
-    <Container size="large">
-      <section className="grid grid-cols-1 lg:grid-cols-5 content-center items-center gap-4">
-        <div className="lg:col-span-2">
-          <Img data={data} />
-        </div>
-        <div className="lg:col-span-3 flex flex-col gap-6 justify-center">
-          <div>
-            <Heading data={data} />
-            <SubHeading data={data} />
-          </div>
-          <Txt data={data} />
-          {data.actions && (
-            <Actions actions={data.actions} />
+    <Container
+      className={`${styles.heroScreen} mx-auto grid grid-cols-1 lg:grid-cols-5 content-center items-center`}
+    >
+      <div className="lg:col-span-2">
+        <Img data={data} />
+      </div>
+      <div className="lg:col-span-3 flex flex-col gap-6 justify-center">
+        <div>
+          {data.heading && (
+            <Heading
+              size="xl"
+              className="sm:text-left text-center font-bold uppercase"
+              data={data}
+              name="heading"
+            >
+              {data.heading}
+            </Heading>
+          )}
+          {data.subheading && (
+            <Heading
+              size="medium"
+              className="sm:text-left text-center font-extralight"
+              data={data}
+              name="subheading"
+            >
+              {data.subheading}
+            </Heading>
           )}
         </div>
-      </section>
+        <Txt data={data} />
+        {data.actions && <Actions actions={actions} />}
+      </div>
     </Container>
   );
+};
+
+export const heroTemplateSchema: Template = {
+  name: "heroTemplate",
+  label: "Hero Template",
+  ui: {
+    previewSrc: "/blocks/hero.png",
+    defaultItem: {
+      heading: "Here is the heading",
+      subheading: "Here is the sub heading",
+      text: "Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.",
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      label: "Heading",
+      name: "heading",
+    },
+    {
+      type: "string",
+      label: "Sub Heading",
+      name: "subheading",
+    },
+    {
+      label: "Text",
+      name: "text",
+      type: "rich-text",
+    },
+    {
+      label: "Actions",
+      name: "actions",
+      type: "object",
+      list: true,
+      ui: {
+        defaultItem: {
+          label: "Action Label",
+          type: "button",
+          style: "primary",
+          icon: true,
+          link: "/",
+        },
+        itemProps: (item) => ({ label: item.label }),
+      },
+      fields: [
+        {
+          label: "Label",
+          name: "label",
+          type: "string",
+        },
+        {
+          label: "Type",
+          name: "type",
+          type: "string",
+          options: [
+            { label: "Primary", value: "primary" },
+            { label: "Secondary", value: "secondary" },
+          ],
+        },
+        {
+          label: "Link",
+          name: "link",
+          type: "string",
+        },
+      ],
+    },
+    {
+      type: "object",
+      label: "Image",
+      name: "image",
+      fields: [
+        {
+          name: "src",
+          label: "Image Source",
+          type: "image",
+        },
+        {
+          name: "alt",
+          label: "Alt Text",
+          type: "string",
+        },
+      ],
+    },
+  ],
 };

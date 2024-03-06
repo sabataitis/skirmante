@@ -12,7 +12,7 @@ export const Actions = ({
   className = "",
   actions,
 }: {
-  className: string;
+  className?: string;
   actions: Action[];
 }) => {
   const styles = {
