@@ -3,6 +3,7 @@ import { testimonialBlockSchema } from "../../components/blocks/testimonial";
 import { featureBlockSchema } from "../../components/blocks/features";
 import { heroTemplateSchema } from "../../components/blocks/hero-template";
 import { cardTemplateBlockSchema } from "../../components/blocks/card-template";
+import { threeColumnTemplateSchema } from "../../components/blocks/three-column-template";
 
 const Page: Collection = {
   label: "Pages",
@@ -13,9 +14,9 @@ const Page: Collection = {
       if (document._sys.filename === "home") {
         return `/`;
       }
-      // if (document._sys.filename === "about") {
-      //   return `/about`;
-      // }
+      if (document._sys.filename === "services") {
+        return `/services`;
+      }
       return undefined;
     },
   },
@@ -39,11 +40,12 @@ const Page: Collection = {
       },
       templates: [
         heroTemplateSchema,
+        threeColumnTemplateSchema,
         cardTemplateBlockSchema,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        featureBlockSchema,
-        testimonialBlockSchema,
+        // featureBlockSchema,
+        // testimonialBlockSchema,
       ],
     },
   ],

@@ -6,27 +6,34 @@ import { tinaField } from "tinacms/dist/react";
 import { Action, Actions } from "../util/actions";
 import { PageBlocksCardTemplate } from "../../tina/__generated__/types";
 
-const Txt = ({ data }: { data: PageBlocksCardTemplate }) => {
-  return (
-    data.text && (
-      <div
-        data-tina-field={tinaField(data, "text")}
-        className="sm:prose-2xl prose-xl"
-      >
-        <TinaMarkdown content={data.text} />
-      </div>
-    )
-  );
-};
-
-export const CardTemplate = ({ data }: { data: PageBlocksCardTemplate }) => {
+export const CardTemplate = ({
+  className = "",
+  actionsClassName = "",
+  data,
+}: {
+  className?: string;
+  actionsClassName?: string;
+  data: PageBlocksCardTemplate;
+}) => {
   return (
     <Container
-      className="mx-auto my-4 rounded-xl ring ring-card bg-card"
+      className={`${className} mx-auto h-full rounded-xl ring ring-card bg-card`}
       size="medium"
     >
-      <Txt data={data} />
-      {data.actions && <Actions actions={data.actions as Action[]} />}
+      {data.text && (
+        <div
+          data-tina-field={tinaField(data, "text")}
+          className="sm:prose-2xl prose-xl"
+        >
+          <TinaMarkdown content={data.text} />
+        </div>
+      )}
+      {data.actions && (
+        <Actions
+          className={actionsClassName}
+          actions={data.actions as Action[]}
+        />
+      )}
     </Container>
   );
 };
@@ -40,8 +47,18 @@ export const cardTemplateBlockSchema: Template = {
       heading: "Heading",
       body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
     },
+    itemProps: (item) => {
+      return {
+        label: item?.label,
+      };
+    },
   },
   fields: [
+    {
+      type: "string",
+      label: "Label",
+      name: "label",
+    },
     {
       type: "rich-text",
       label: "Text",
