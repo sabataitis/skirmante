@@ -1,17 +1,15 @@
 import React from "react";
 import { InferGetStaticPropsType } from "next";
-import { Blocks } from "../components/blocks-renderer";
+import { Blocks } from "../components/core/blocks-renderer";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../components/layout";
 import { client } from "../tina/__generated__/client";
 
-export default function HomePage(
-  props: InferGetStaticPropsType<typeof getStaticProps>
-) {
+export default function HomePage(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useTina(props);
 
   return (
-    <Layout rawData={data} data={data.global as any}>
+    <Layout data={data.global}>
       <Blocks {...data.page} />
     </Layout>
   );

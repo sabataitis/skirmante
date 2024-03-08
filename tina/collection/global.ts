@@ -103,61 +103,6 @@ const Global: Collection = {
         },
       ],
     },
-    {
-      type: "object",
-      label: "Theme",
-      name: "theme",
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      fields: [
-        {
-          type: "string",
-          label: "Primary Color",
-          name: "color",
-          ui: {
-            component: ColorPickerInput,
-          },
-        },
-        {
-          type: "string",
-          name: "font",
-          label: "Font Family",
-          options: [
-            {
-              label: "System Sans",
-              value: "sans",
-            },
-            {
-              label: "Nunito",
-              value: "nunito",
-            },
-            {
-              label: "Lato",
-              value: "lato",
-            },
-          ],
-        },
-        {
-          type: "string",
-          name: "darkMode",
-          label: "Dark Mode",
-          options: [
-            {
-              label: "System",
-              value: "system",
-            },
-            {
-              label: "Light",
-              value: "light",
-            },
-            {
-              label: "Dark",
-              value: "dark",
-            },
-          ],
-        },
-      ],
-    },
   ],
 };
 

@@ -1,9 +1,9 @@
-import type { Page, PageBlocks } from "../tina/__generated__/types";
-import { Features } from "./blocks/features";
-import { HeroTemplate } from "./blocks/hero-template";
-import { Testimonial } from "./blocks/testimonial";
+import type { Page, PageBlocks } from "../../tina/__generated__/types";
+import { Features } from "../blocks/features";
+import { HeroTemplate } from "../blocks/hero-template";
+import { Testimonial } from "../blocks/testimonial";
 import { tinaField } from "tinacms/dist/react";
-import { CardTemplate } from "./blocks/card-template";
+import { CardTemplate } from "../blocks/card-template";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
