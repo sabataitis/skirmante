@@ -44,8 +44,8 @@ const Page: Collection = {
         cardTemplateBlockSchema,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // featureBlockSchema,
-        // testimonialBlockSchema,
+        featureBlockSchema,
+        testimonialBlockSchema,
       ],
     },
   ],

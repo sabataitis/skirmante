@@ -1,16 +1,10 @@
 {
   "header": {
-    "icon": {
-      "name": "Tina",
-      "color": "orange",
-      "style": "float"
-    },
     "name": "skirmante.com",
-    "color": "default",
     "nav": [
       {
-        "href": "home",
-        "label": "Home"
+        "href": "/about",
+        "label": "About Me"
       },
       {
         "href": "services",
@@ -19,16 +13,18 @@
     ]
   },
   "footer": {
-    "color": "default",
-    "social": {
-      "facebook": "/",
-      "twitter": "/",
-      "instagram": "/"
-    }
-  },
-  "theme": {
-    "color": "blue",
-    "font": "sans",
-    "darkMode": "system"
+    "socials": {
+      "linkedin": "linkedin.com/in/skirmante-sabataityte/"
+    },
+    "references": [
+      {
+        "href": "/about",
+        "label": "About"
+      },
+      {
+        "href": "/services",
+        "label": "Services"
+      }
+    ]
   }
 }

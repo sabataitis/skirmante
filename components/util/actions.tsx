@@ -16,7 +16,7 @@ export const Actions = ({
   actions: Action[];
 }) => {
   const styles = {
-    primary: "bg-purple-700 text-white hover:bg-purple-600",
+    primary: "bg-primary text-white hover:bg-purple-600",
     secondary: "bg-orange-500 text-black hover:bg-orange-400",
   };
 

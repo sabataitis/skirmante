@@ -4,9 +4,9 @@ blocks:
   - heading: SOLUTION FOCUSED COACHING
     subheading: Change doesn't need to be difficult
     text: >
-      Hi, my name is Skirmante, I am a solution focused practitioner helping my
-      clients to create change for better, happier life. My coaching style comes
-      from Solution Focused approach and is topped with
+      Hi, my name is **Skirmante**, I am a **solution** focused practitioner
+      helping my clients to create change for better, happier life. My coaching
+      style comes from Solution Focused approach and is topped with
 
       highly effective applied neuroscience tools. Our work together in
 
@@ -19,7 +19,7 @@ blocks:
     actions:
       - label: Work with me
         type: primary
-        link: /
+        link: /services
       - label: Have a question
         type: primary
         link: /

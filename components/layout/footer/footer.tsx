@@ -1,74 +1,46 @@
 import React from "react";
-import Link from "next/link";
-import { FaFacebookF, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { Container } from "../../util/container";
-import { Icon } from "../../util/icon";
+import Link from "next/link";
+import styles from "../../styles/footer.module.css";
 
-export const Footer = ({ data, icon }) => {
+export const Footer = ({ data }) => {
   return (
-    <footer>
-    this is a footer
-      <Container className="relative" size="small">
-        <div className="flex justify-between items-center gap-6 flex-wrap">
-          <Link
-            href="/"
-            className="group mx-2 flex items-center font-bold tracking-tight text-gray-400 dark:text-gray-300 opacity-50 hover:opacity-100 transition duration-150 ease-out whitespace-nowrap"
-          >
-            <Icon
-              parentColor={data.color}
-              data={{
-                name: icon.name,
-                color: data.color === "primary" ? "primary" : icon.color,
-                style: icon.style,
-              }}
-              className="inline-block h-10 w-auto group-hover:text-orange-500"
-            />
-          </Link>
-          <div className="flex gap-4">
-            {data.social && data.social.facebook && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.facebook}
-                target="_blank"
-              >
-                <FaFacebookF />
-              </a>
-            )}
-            {data.social && data.social.twitter && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.twitter}
-                target="_blank"
-              >
-                <FaTwitter />
-              </a>
-            )}
-            {data.social && data.social.instagram && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.instagram}
-                target="_blank"
-              >
-                <AiFillInstagram />
-              </a>
-            )}
-            {data.social && data.social.github && (
-              <a
-                className="inline-block opacity-80 hover:opacity-100 transition ease-out duration-150"
-                href={data.social.github}
-                target="_blank"
-              >
-                <FaGithub />
-              </a>
-            )}
-          </div>
+    <footer className="mt-6 bg-purple-500 text-white">
+      <Container className="flex flex-col gap-4">
+        <div className="flex sm:flex-row flex-col gap-4">
+          {data.socials && data.socials.facebook && (
+            <a href={data.socials.facebook} target="_blank">
+              <FaFacebookF size="24" />
+            </a>
+          )}
+          {data.socials && data.socials.twitter && (
+            <a href={data.socials.twitter} target="_blank">
+              <FaTwitter size="24" />
+            </a>
+          )}
+          {data.socials && data.socials.instagram && (
+            <a href={data.socials.instagram} target="_blank">
+              <AiFillInstagram size="24" />
+            </a>
+          )}
+          {data.socials && data.socials.linkedin && (
+            <a href={data.socials.linkedin} target="_blank">
+              <FaLinkedin size="24" />
+            </a>
+          )}
         </div>
-        <div
-          className={`absolute h-1 bg-gradient-to-r from-transparent ${
-            data.color === "primary" ? `via-white` : `via-black dark:via-white`
-          } to-transparent top-0 left-4 right-4 opacity-5`}
-        ></div>
+        <div className="flex sm:flex-row flex-col gap-4">
+          {data.references &&
+            data.references.map(function (ref, index) {
+              return (
+                <Link key={index} href={ref.href ? ref.href : "/"}>
+                  {ref.label}
+                </Link>
+              );
+            })}
+        </div>
       </Container>
     </footer>
   );

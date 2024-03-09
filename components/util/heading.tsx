@@ -10,9 +10,9 @@ export const Heading = ({
 }) => {
   const sizes = {
     small: "text-md sm:text-lg",
-    medium: "text-lg sm:text-xl",
+    medium: "text-lg sm:text-2xl",
     large: "text-2xl sm:text-4xl",
-    xl: "text-4xl sm:text-6xl",
+    xl: "text-3xl sm:text-6xl",
   };
 
   return (

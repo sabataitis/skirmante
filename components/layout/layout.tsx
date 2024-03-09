@@ -24,10 +24,7 @@ export const Layout = ({
           <main>
             {children}
           </main>
-          <Footer
-            data={data?.footer}
-            icon={data?.header.icon}
-          />
+          <Footer data={data?.footer} />
         </div>
     </>
   );

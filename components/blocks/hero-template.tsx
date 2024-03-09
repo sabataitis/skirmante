@@ -13,7 +13,7 @@ export const Txt = ({ data }: { data: PageBlocksHeroTemplate }) => {
     data.text && (
       <div
         data-tina-field={tinaField(data, "text")}
-        className="sm:prose-2xl prose-xl"
+        className="sm:text-2xl text-lg sm:leading-10"
       >
         <TinaMarkdown content={data.text} />
       </div>
@@ -49,17 +49,17 @@ export const HeroTemplate = ({ data }: { data: PageBlocksHeroTemplate }) => {
 
   return (
     <Container
-      className={`${styles.heroScreen} mx-auto grid grid-cols-1 lg:grid-cols-5 content-center items-center`}
+      className={`${styles.heroScreen} mx-auto grid grid-cols-1 lg:grid-cols-5 content-center items-center gap-6`}
     >
       <div className="lg:col-span-2">
         <Img data={data} />
       </div>
-      <div className="lg:col-span-3 flex flex-col gap-6 justify-center">
-        <div>
+      <div className="lg:col-span-3 flex flex-col gap-8 justify-center">
+        <div className="flex flex-col gap-4">
           {data.heading && (
             <Heading
               size="xl"
-              className="sm:text-left text-center font-bold uppercase"
+              className="font-bold uppercase"
               data={data}
               name="heading"
             >
@@ -69,7 +69,7 @@ export const HeroTemplate = ({ data }: { data: PageBlocksHeroTemplate }) => {
           {data.subheading && (
             <Heading
               size="medium"
-              className="sm:text-left text-center font-extralight"
+              className="font-extralight"
               data={data}
               name="subheading"
             >

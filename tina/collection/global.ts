@@ -1,6 +1,4 @@
 import type { Collection } from "tinacms";
-import { iconSchema } from "../../components/util/icon";
-import { ColorPickerInput } from "../fields/color";
 
 const Global: Collection = {
   label: "Global",
@@ -16,24 +14,14 @@ const Global: Collection = {
       label: "Header",
       name: "header",
       fields: [
-        iconSchema as any,
         {
           type: "string",
           label: "Name",
           name: "name",
         },
         {
-          type: "string",
-          label: "Color",
-          name: "color",
-          options: [
-            { label: "Default", value: "default" },
-            { label: "Primary", value: "primary" },
-          ],
-        },
-        {
           type: "object",
-          label: "Nav Links",
+          label: "Navigation items",
           name: "nav",
           list: true,
           ui: {
@@ -66,18 +54,9 @@ const Global: Collection = {
       name: "footer",
       fields: [
         {
-          type: "string",
-          label: "Color",
-          name: "color",
-          options: [
-            { label: "Default", value: "default" },
-            { label: "Primary", value: "primary" },
-          ],
-        },
-        {
           type: "object",
           label: "Social Links",
-          name: "social",
+          name: "socials",
           fields: [
             {
               type: "string",
@@ -96,8 +75,35 @@ const Global: Collection = {
             },
             {
               type: "string",
-              label: "Github",
-              name: "github",
+              label: "Linkedin",
+              name: "linkedin",
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "References",
+          name: "references",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.label };
+            },
+            defaultItem: {
+              href: "home",
+              label: "Home",
+            },
+          },
+          fields: [
+            {
+              type: "string",
+              label: "Link",
+              name: "href",
+            },
+            {
+              type: "string",
+              label: "Label",
+              name: "label",
             },
           ],
         },
