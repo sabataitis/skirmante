@@ -1,11 +1,10 @@
 import { PageBlocksThreeColumnTemplate, PageBlocksThreeColumnTemplateBlocks } from "../../tina/__generated__/types";
-import { Container } from "../util/container";
-import { Template } from "tinacms";
-import { CardTemplate, cardTemplateBlockSchema } from "./card-template";
 import { tinaField } from "tinacms/dist/react";
-import styles from "../styles/three-column-template.module.css";
+import styles from "./styles/columns.module.css";
+import { Container } from "../shared";
+import { Card } from "./card";
 
-export const ThreeColumnTemplate = ({
+export const Columns = ({
   data,
 }: {
   data: PageBlocksThreeColumnTemplate;
@@ -32,7 +31,7 @@ const Block = (block: PageBlocksThreeColumnTemplateBlocks) => {
   switch (block.__typename) {
     case "PageBlocksThreeColumnTemplateBlocksCardTemplate":
       return (
-        <CardTemplate
+        <Card
           className="text-center flex flex-col items-center justify-between"
           actionsClassName="flex flex-col my-4"
           data={block as any}
@@ -43,19 +42,3 @@ const Block = (block: PageBlocksThreeColumnTemplateBlocks) => {
   }
 };
 
-export const threeColumnTemplateSchema: Template = {
-  name: "threeColumnTemplate",
-  label: "Three Column Template",
-  fields: [
-    {
-      type: "object",
-      label: "Blocks",
-      name: "blocks",
-      list: true,
-      ui: { 
-          visualSelector: true,
-      },
-      templates: [cardTemplateBlockSchema],
-    },
-  ],
-};

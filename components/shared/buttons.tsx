@@ -2,28 +2,28 @@ import Link from "next/link";
 import * as React from "react";
 import { tinaField } from "tinacms/dist/react";
 
-export type Action = {
+export type Button = {
   label: string;
   type: "primary" | "secondary";
   link: string;
 };
 
-export const Actions = ({
+export const Buttons = ({
   className = "",
-  actions,
+  buttons,
 }: {
   className?: string;
-  actions: Action[];
+  buttons: Button[];
 }) => {
   const styles = {
     primary: "bg-primary text-white hover:bg-purple-600",
-    secondary: "bg-orange-500 text-black hover:bg-orange-400",
+    secondary: "bg-secondary text-black hover:bg-orange-400",
   };
 
   return (
-    <div className={`flex flex-wrap items-center gap-y-4 gap-x-6 ${className}`}>
-      {actions &&
-        actions.map(function (action, index) {
+    <div className={`${className} flex items-center gap-4`}>
+      {buttons &&
+        buttons.map(function (action, index) {
           return (
             <Link key={index} href={action.link ? action.link : "/"}>
               <button

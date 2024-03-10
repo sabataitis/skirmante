@@ -1,14 +1,16 @@
 import type { Collection } from "tinacms";
-import { testimonialBlockSchema } from "../../components/blocks/testimonial";
-import { featureBlockSchema } from "../../components/blocks/features";
-import { heroTemplateSchema } from "../../components/blocks/hero-template";
-import { cardTemplateBlockSchema } from "../../components/blocks/card-template";
-import { threeColumnTemplateSchema } from "../../components/blocks/three-column-template";
+// import { testimonialBlockSchema } from "../../components/blocks/testimonial";
+// import { featureBlockSchema } from "../../components/blocks/features";
+
+import  HeroSchema  from "../../components/templates/schemas/hero.schema";
+import  CardSchema from "../../components/templates/schemas/card.schema";
+import  ColumnsSchema from "../../components/templates/schemas/columns.schema";
 
 const Page: Collection = {
   label: "Pages",
   name: "page",
   path: "content/pages",
+  format: "mdx",
   ui: {
     router: ({ document }) => {
       if (document._sys.filename === "home") {
@@ -39,13 +41,13 @@ const Page: Collection = {
         visualSelector: true,
       },
       templates: [
-        heroTemplateSchema,
-        threeColumnTemplateSchema,
-        cardTemplateBlockSchema,
+        HeroSchema,
+        CardSchema,
+        ColumnsSchema,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        featureBlockSchema,
-        testimonialBlockSchema,
+        // featureBlockSchema,
+        // testimonialBlockSchema,
       ],
     },
   ],

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader, GlobalHeaderNav } from "../../tina/__generated__/types";
-import styles from "../styles/navbar.module.css";
+import styles from "./header.module.css";
 
 function isActiveItemClass(item: GlobalHeaderNav, router: NextRouter) {
   const isActive =

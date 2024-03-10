@@ -1,23 +1,29 @@
 import React from "react";
 import { InferGetStaticPropsType } from "next";
-import { Blocks } from "../components/core/blocks-renderer";
 import { useTina } from "tinacms/dist/react";
-import { Layout } from "../components/layout";
 import { client } from "../tina/__generated__/client";
+import { Layout } from "../components/layout/layout";
+import { Blocks } from "../components/utils/blocks-renderer";
 
-export default function HomePage(props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function HomePage(
+  props: InferGetStaticPropsType<typeof getStaticProps>,
+) {
   const { data } = useTina(props);
+  console.info({data});
 
-  return (
-    <Layout data={data.global}>
-      <Blocks {...data.page} />
-    </Layout>
-  );
+  if (data?.global && data?.page) {
+    return (
+      <Layout data={data.global}>
+        <Blocks {...data.page} />
+      </Layout>
+    );
+  }
+  return null;
 }
 
 export const getStaticProps = async ({ params }) => {
   const tinaProps = await client.queries.contentQuery({
-    relativePath: `${params.filename}.md`,
+    relativePath: `${params.filename}.mdx`,
   });
   const props = {
     ...tinaProps,

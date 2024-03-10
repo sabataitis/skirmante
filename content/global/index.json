@@ -1,10 +1,10 @@
 {
   "bgImageUrl": "https://imgur.com/HnvBfnd.png",
   "header": {
-    "name": "skirmante.com",
+    "name": "skirmante.coms",
     "nav": [
       {
-        "href": "/about",
+        "href": "about",
         "label": "About Me"
       },
       {
@@ -19,7 +19,7 @@
     },
     "references": [
       {
-        "href": "/about",
+        "href": "about",
         "label": "About"
       },
       {

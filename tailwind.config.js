@@ -18,6 +18,7 @@ module.exports = {
       yellow: colors.yellow,
       card: "#78716c1a",
       primary: "#7e22ce",
+      secondary: "#ffa500",
       gray: {
         50: "#F6F6F9",
         100: "#EDECF3",

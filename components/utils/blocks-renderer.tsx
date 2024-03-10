@@ -1,8 +1,8 @@
 import type { Page, PageBlocks } from "../../tina/__generated__/types";
-import { HeroTemplate } from "../blocks/hero-template";
 import { tinaField } from "tinacms/dist/react";
-import { CardTemplate } from "../blocks/card-template";
-import { ThreeColumnTemplate } from "../blocks/three-column-template";
+import { Columns } from "../templates/columns";
+import { Card } from "../templates/card";
+import { Hero } from "../templates/hero";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
@@ -22,12 +22,12 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
 
 const Block = (block: PageBlocks) => {
   switch (block.__typename) {
-    case "PageBlocksThreeColumnTemplate":
-      return <ThreeColumnTemplate data={block} />;
-    case "PageBlocksCardTemplate":
-      return <CardTemplate data={block} />;
-    case "PageBlocksHeroTemplate":
-      return <HeroTemplate data={block} />;
+    case "PageBlocksColumns":
+      return <Columns data={block} />;
+    case "PageBlocksCard":
+      return <Card data={block} />;
+    case "PageBlocksHero":
+      return <Hero data={block} />;
     // case "PageBlocksFeatures":
     //   return <Features data={block} />;
     // case "PageBlocksTestimonial":

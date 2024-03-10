@@ -5,7 +5,7 @@ export type AppImagePayload = {
   className: string;
 };
 
-export default function AppImage({ data, className = "" }: AppImagePayload) {
+export function AppImage({ data, className = "" }: AppImagePayload) {
   return (
     <Image
       className={className}

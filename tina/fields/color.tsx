@@ -1,30 +1,24 @@
 import * as React from "react";
 import { wrapFieldsWithMeta } from "tinacms";
 
-export const colorOptions = [
-  "blue",
-  "teal",
-  "green",
-  "yellow",
-  "orange",
-  "red",
-  "pink",
-  "purple",
-  "white",
-];
+export const colorOptions = ["purple", "orange", "white", "gray", "none"];
 
 export const ColorPickerInput = wrapFieldsWithMeta(({ input }) => {
-  const inputClasses = {
-    blue: "bg-blue-500 border-blue-600",
-    teal: "bg-teal-500 border-teal-600",
-    green: "bg-green-500 border-green-600",
-    yellow: "bg-yellow-500 border-yellow-600",
-    orange: "bg-orange-500 border-orange-600",
-    red: "bg-red-500 border-red-600",
-    pink: "bg-pink-500 border-pink-600",
-    purple: "bg-purple-500 border-purple-600",
-    white: "bg-white border-gray-150",
+  const classes = {
+    purple: "bg-primary border-purple-600",
+    orange: "bg-secondary border-orange-600",
+    white: "bg-white-500 border-white-600",
+    gray: "bg-gray-500 border-gray-600",
+    none: "",
   };
+
+  const bindActive = (input, color) => {
+    return input.value === color
+      ? "ring-[3px] ring-offset-2 ring-blue-400"
+      : "";
+  };
+
+  const colorPickerClasses = "w-9 h-9 rounded-full shadow border";
 
   return (
     <>
@@ -33,13 +27,11 @@ export const ColorPickerInput = wrapFieldsWithMeta(({ input }) => {
         {colorOptions.map((color) => {
           return (
             <button
-              className={`w-9 h-9 rounded-full shadow border ${
-                inputClasses[color]
-              } ${
-                input.value === color
-                  ? "ring-[3px] ring-offset-2 ring-blue-400"
-                  : ""
-              }`}
+              className={`${colorPickerClasses} ${classes[color]} ${bindActive(
+                input,
+                color,
+              )}
+        `}
               onClick={() => {
                 input.onChange(color);
               }}

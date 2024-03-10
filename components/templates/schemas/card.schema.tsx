@@ -1,48 +1,9 @@
-import React from "react";
-import { Container } from "../util/container";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { Template } from "tinacms";
-import { tinaField } from "tinacms/dist/react";
-import { Action, Actions } from "../util/actions";
-import { PageBlocksCardTemplate } from "../../tina/__generated__/types";
+import { Template } from "tinacms";
 
-export const CardTemplate = ({
-  className = "",
-  actionsClassName = "",
-  data,
-}: {
-  className?: string;
-  actionsClassName?: string;
-  data: PageBlocksCardTemplate;
-}) => {
-  return (
-    <Container
-      className={`${className} mx-auto h-full rounded-xl ring ring-card bg-card`}
-      size="medium"
-    >
-      {data.text && (
-        <div
-          data-tina-field={tinaField(data, "text")}
-          className="sm:prose-2xl prose-xl"
-        >
-          <TinaMarkdown content={data.text} />
-        </div>
-      )}
-      {data.actions && (
-        <Actions
-          className={actionsClassName}
-          actions={data.actions as Action[]}
-        />
-      )}
-    </Container>
-  );
-};
-
-export const cardTemplateBlockSchema: Template = {
-  name: "cardTemplate",
+const schema: Template = {
+  name: "card",
   label: "Card Template",
   ui: {
-    previewSrc: "/blocks/content.png",
     defaultItem: {
       heading: "Heading",
       body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
@@ -65,13 +26,13 @@ export const cardTemplateBlockSchema: Template = {
       name: "text",
     },
     {
-      label: "Actions",
-      name: "actions",
+      label: "Buttons",
+      name: "buttons",
       type: "object",
       list: true,
       ui: {
         defaultItem: {
-          label: "Action Label",
+          label: "Button Label",
           type: "button",
           style: "primary",
           icon: true,
@@ -103,3 +64,5 @@ export const cardTemplateBlockSchema: Template = {
     },
   ],
 };
+
+export default schema;

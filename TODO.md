@@ -1,5 +1,6 @@
 Tasks
     [*] Add floral background (continuos scrolling effect)
+    [] Add highlight to "Solution" word in hero template
 
 Templates
 [] Navigation mobile dropdown; Social Icons section
