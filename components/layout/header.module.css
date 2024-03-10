@@ -4,3 +4,12 @@
     top: 0;
     z-index: 999;
 }
+
+.mobile {
+    position: absolute;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    max-height: 80vh;
+}
+

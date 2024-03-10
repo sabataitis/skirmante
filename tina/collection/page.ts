@@ -13,7 +13,8 @@ const Page: Collection = {
   format: "mdx",
   ui: {
     router: ({ document }) => {
-      if (document._sys.filename === "home") {
+        console.info({document})
+      if (document._sys.filename === "index") {
         return `/`;
       }
       if (document._sys.filename === "services") {
