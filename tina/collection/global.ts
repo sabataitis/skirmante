@@ -9,11 +9,11 @@ const Global: Collection = {
     global: true,
   },
   fields: [
-      {
-          name: "bgImageUrl",
-          label: "Background Image Url",
-          type: "string",
-      },
+    {
+      name: "bgImageUrl",
+      label: "Background Image Url",
+      type: "string",
+    },
     {
       type: "object",
       label: "Header",
@@ -48,6 +48,42 @@ const Global: Collection = {
               type: "string",
               label: "Label",
               name: "label",
+            },
+            {
+                type: "string",
+                label: "Type",
+                name: "type",
+                options: [
+                    { label: "Text", value: "text" },
+                    { label: "Button", value: "button" },
+                ],
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Social Links",
+          name: "socials",
+          fields: [
+            {
+              type: "string",
+              label: "Facebook",
+              name: "facebook",
+            },
+            {
+              type: "string",
+              label: "Twitter",
+              name: "twitter",
+            },
+            {
+              type: "string",
+              label: "Instagram",
+              name: "instagram",
+            },
+            {
+              type: "string",
+              label: "Linkedin",
+              name: "linkedin",
             },
           ],
         },

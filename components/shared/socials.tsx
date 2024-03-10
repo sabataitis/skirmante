@@ -11,7 +11,7 @@ enum MEDIA_SITE {
 export const Socials = ({
   socials,
 }: {
-  socials: Record<MEDIA_SITE, string | null>;
+  socials: Partial<Record<MEDIA_SITE, string | null>>;
 }) => {
   return (
     <div className="flex sm:flex-row flex-col gap-4">

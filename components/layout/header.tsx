@@ -1,45 +1,35 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { NextRouter, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { tinaField } from "tinacms/dist/react";
-import { GlobalHeader, GlobalHeaderNav } from "../../tina/__generated__/types";
+import { GlobalHeader } from "../../tina/__generated__/types";
 import styles from "./header.module.css";
 
-import { CiMenuBurger } from "react-icons/ci";
+import { FiMenu } from "react-icons/fi";
+import { Socials } from "../shared";
 
-function isActiveItemClass(item: GlobalHeaderNav, router: NextRouter) {
-  const isActive =
-    item.href === ""
-      ? router.asPath === "/"
-      : router.asPath.includes(item.href);
+const Item = ({ item }) => {
+  if (item.type === "button") {
+    return (
+      <Link href={`/${item.href}`}>
+        <button
+          data-tina-field={tinaField(item)}
+          className="bg-white text-primary rounded-full px-12 py-2 font-bold transition duration-300 ease-in-out transform hover:scale-105 "
+        >
+          {item.label}
+        </button>
+      </Link>
+    );
+  }
 
-  return isActive ? "underline" : "";
-}
-
-const Item = ({
-  idx,
-  item,
-  className = "",
-}: {
-  item: GlobalHeaderNav;
-  idx: number;
-  className;
-}) => {
   return (
-    <Link
-      className={`${className}`}
-      key={`${item.label}-${idx}`}
-      href={`/${item.href}`}
-      data-tina-field={tinaField(item, "label")}
-    >
+    <Link data-tina-field={tinaField(item)} href={`/${item.href}`}>
       {item.label}
     </Link>
   );
 };
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
-  const router = useRouter();
-
   const [show, setShow] = useState<boolean>();
 
   return (
@@ -50,12 +40,13 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         <Link href="/" className="text-xl">
           <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
         </Link>
+        <Socials socials={data.socials} />
       </div>
       {/* Desktop */}
       <div className="items-center gap-4 font-bold hidden sm:flex text-md">
-        {data.nav.map((item, idx) => {
-          return <Item idx={idx} item={item} className="p-2" />;
-        })}
+        {data.nav.map((item) => (
+          <Item key={`${item.label}`} item={item} />
+        ))}
       </div>
 
       {/* Mobile */}
@@ -63,18 +54,18 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         className="cursor-pointer flex items-center gap-4 font-bold sm:hidden text-md"
         onClick={() => setShow(!show)}
       >
-        <CiMenuBurger size="24" />
+        <FiMenu size="24" />
       </div>
 
       <div
         className={`${styles.mobile} bg-primary ${
-          show ? "visible" : "invisible"
+          show ? "visible max-h-80" : "invisible max-h-0"
         }`}
       >
         <div className="flex flex-col items-center pb-4 justify-center gap-4">
-          {data.nav.map((item, idx) => {
-            return <Item idx={idx} item={item} className="p-2" />;
-          })}
+          {data.nav.map((item) => (
+            <Item key={`${item.label}`} item={item} />
+          ))}
         </div>
       </div>
     </nav>

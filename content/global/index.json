@@ -4,14 +4,18 @@
     "name": "skirmante.coms",
     "nav": [
       {
-        "href": "about",
-        "label": "About Me"
-      },
-      {
         "href": "services",
         "label": "Services"
+      },
+      {
+        "href": "work-with-me",
+        "label": "Get Started Today",
+        "type": "button"
       }
-    ]
+    ],
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/skirmante-sabataityte/"
+    }
   },
   "footer": {
     "socials": {
