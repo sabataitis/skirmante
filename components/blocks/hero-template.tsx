@@ -23,8 +23,8 @@ export const Txt = ({ data }: { data: PageBlocksHeroTemplate }) => {
 
 export const Img = ({ data }: { data: PageBlocksHeroTemplate }) => {
   const payload = {
-    src: data.image.src,
-    alt: data.image.alt,
+    src: data?.image?.src || "",
+    alt: data?.image?.alt || "",
     width: 600,
     height: 600,
   };

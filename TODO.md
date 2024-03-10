@@ -1,5 +1,5 @@
 Tasks
-    [] Add floral background (continuos scrolling effect)
+    [*] Add floral background (continuos scrolling effect)
 
 Templates
 [] Navigation mobile dropdown; Social Icons section
