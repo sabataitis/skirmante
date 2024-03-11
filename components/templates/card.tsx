@@ -1,66 +1,59 @@
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { AppImage, Button, Buttons, Container, Markdown } from "../shared";
+import { Button, Buttons, Container, Img, Markdown } from "../shared";
 import { PageBlocksCard } from "../../tina/__generated__/types";
-import styles from "./styles/card.module.css";
+import styles from './styles/card.module.css'
 
-export const Card = ({
-  className = "",
-  actionsClassName = "",
-  data,
-}: {
-  className?: string;
-  actionsClassName?: string;
+type Props = {
   data: PageBlocksCard;
-}) => {
-  // 19 is for 0.1 transparency
+  contentClassName?: string;
+};
+
+export const Card = (props: Props) => {
+  const { data, contentClassName = "" } = props;
+
   const bg = { backgroundColor: data.bgc + "19" || "none" };
 
-  const contentBlockAlignment = `flex gap-10 sm:flex-row flex-col items-center`;
-  const blockAlignment = `flex flex-col items-${data.alignment} || 'start'`;
-
   return (
-    <div className={`${styles.card} my-6`} style={bg}>
+    <div className={`w-full h-full`} style={bg}>
       <Container
-        className={`${className} ${blockAlignment} mx-auto`}
+        className={`${styles.card} gap-8 justify-items-${data.alignment}`}
         size="medium"
       >
+        {/* Heading Block */}
         {data.card_heading && (
           <h2
             data-tina-field={tinaField(data, "card_heading")}
-            className="text-2xl sm:text-4xl font-bold mb-6"
+            className={`row-span-1 text-3xl sm:text-4xl font-bold text-${data.alignment}`}
           >
             {data.card_heading}
           </h2>
         )}
-        <div className={`${contentBlockAlignment}`}>
+
+        {/* Image + Content Block */}
+        <div className={`${contentClassName} grid sm:grid-flow-col row-span-4 gap-4`}>
           {data.image && (
-            <div className="flex justify-center p-6 sm:p-10">
-              <AppImage
-              className={`${data.image.roundness}`}
-                data={{
-                  src: data.image.src,
-                  alt: data.image.alt,
-                  height: data.image.height,
-                  width: data.image.width,
-                }}
+            <div className={`${data.image.order} flex justify-center px-10`}>
+              <Img
+                className={`${data.image.radius}`}
+                src={data.image.src}
+                alt={data.image.alt}
+                size={data.image.size}
               />
             </div>
           )}
           <Markdown
-            className={`text-${data.alignment || "left"}`}
+            className={`text-${data.alignment}`}
             data={data}
             markdown={data.text}
             field="text"
           />
         </div>
 
-        {data.buttons && (
-          <Buttons
-            className={actionsClassName}
-            buttons={data.buttons as Button[]}
-          />
-        )}
+        {/* Buttons Block */}
+        <div className={`row-span-1 flex justify-${data.alignment}`}>
+          {data.buttons && <Buttons buttons={data.buttons as Button[]} />}
+        </div>
       </Container>
     </div>
   );

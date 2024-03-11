@@ -1,18 +1,32 @@
 import Image from "next/image";
 
-export type AppImagePayload = {
-  data: { src: string; alt: string; width: number; height: number };
-  className: string;
+export type IMAGE_SIZES = "small" | "medium" | "large";
+
+const sizeMap = {
+  ["small"]: 200,
+  ["medium"]: 400,
+  ["large"]: 600,
+  ["extraLarge"]: 800,
 };
 
-export function AppImage({ data, className = "" }: AppImagePayload) {
+export function Img({
+  src,
+  alt,
+  size,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  size: IMAGE_SIZES | string;
+  className: string;
+}) {
   return (
     <Image
       className={className}
-      src={data.src}
-      width={data.width}
-      height={data.height}
-      alt={data.alt}
+      src={src}
+      width={sizeMap[size] || 400}
+      height={sizeMap[size] || 400}
+      alt={alt}
     />
   );
 }

@@ -1,6 +1,4 @@
-import { Field } from "tinacms";
-
-export const richtextField: Field<boolean> = {
+export const richtextField = {
   label: "Text",
   name: "text",
   type: "rich-text",

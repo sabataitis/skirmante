@@ -18,27 +18,60 @@ blocks:
 
       * Type: Online, Zoom
     bgc: '#FFA500'
-    alignment: left
+    alignment: start
     buttons:
-      - label: Secondary label
+      - label: Ask a question
         type: secondary
-        link: /
+        link: 'mailto:skirmantecoach@gmail.com'
       - label: 'Yes, I am ready'
         type: primary
         link: /
     image:
       src: /uploads/index.jpg
       alt: Portrait of Skirmante
-      width: 600
-      height: 400
-      roundness: rounded-xl
-      order: '2'
+      size: medium
+      radius: rounded-xl
+      order: order-first
     _template: card
-  - card_heading: Something Else
-    text: |
-      Kietai cia veikia
-    bgc: ''
-    alignment: start
-    _template: card
+  - blocks:
+      - card_heading: For Individuals
+        text: |
+          # 50EUR
+
+          * Single coaching session
+          * Duration: 60 min
+          * Payment: prior to session
+          * Type: Online, Zoom
+        bgc: '#78716C'
+        alignment: center
+        buttons:
+          - label: 'Yes, I am ready'
+            type: primary
+        image:
+          src: /uploads/index.jpg
+          alt: portrait
+          size: medium
+          radius: rounded-full
+          order: order-first
+        _template: card
+      - card_heading: 5 Session Package
+        text: |
+          # 225EUR
+
+          * Single session duration 60 min
+          * Total coaching contract duration max 10 weeks
+          * Payment: prior to session
+          * Type: Online, Zoom
+        bgc: '#78716C'
+        alignment: center
+        buttons:
+          - label: 'Yes, I am ready'
+            type: primary
+        _template: card
+      - card_heading: Newsletter
+        text: ''
+        bgc: '#78716C'
+        _template: card
+    _template: columns
 ---
 

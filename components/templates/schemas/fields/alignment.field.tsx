@@ -2,11 +2,7 @@ export const alignmentField = {
   label: "Alignment",
   name: "alignment",
   type: "string",
-  ui: {
-    defaultItem: {
-      type: "start",
-    },
-  },
+  defaultValue: "start",
   options: [
     { label: "Start", value: "start" },
     { label: "Center", value: "center" },

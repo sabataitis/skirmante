@@ -6,12 +6,12 @@ export const Container = ({
   className = "",
 }) => {
   const sizes = {
-    medium: "max-w-screen-xl py-12 sm:py-14 px-6",
-    large: "max-w-screen-2xl py-12 sm:py-14 px-2",
+    medium: "max-w-screen-xl py-14 px-6",
+    large: "max-w-screen-2xl py-14 px-2",
     default: "py-12 sm:py-14 px-6",
   };
 
   return (
-    <section className={`${sizes[size]} ${className}`}>{children}</section>
+    <section className={`mx-auto h-full ${sizes[size]} ${className}`}>{children}</section>
   );
 };

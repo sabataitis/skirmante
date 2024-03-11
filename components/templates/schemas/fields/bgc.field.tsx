@@ -4,6 +4,7 @@ export const bgcField = {
   type: "string",
   name: "bgc",
   label: "Background Color",
+  defaultValue: "none",
   ui: {
     component: "color",
     colorFormat: "hex",

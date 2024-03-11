@@ -3,24 +3,19 @@ export const buttonsField = {
   name: "buttons",
   type: "object",
   list: true,
-  ui: {
-    defaultItem: {
-      label: "Button Label",
-      type: "primary",
-      link: "/",
-    },
-    itemProps: (item) => ({ label: item.label }),
-  },
+  ui: { itemProps: (item) => ({ label: item.label }) },
   fields: [
     {
       label: "Label",
       name: "label",
       type: "string",
+      defaultValue: "Button Label",
     },
     {
       label: "Type",
       name: "type",
       type: "string",
+      defaultValue: "primary",
       options: [
         { label: "Primary", value: "primary" },
         { label: "Secondary", value: "secondary" },
@@ -30,6 +25,7 @@ export const buttonsField = {
       label: "Link",
       name: "link",
       type: "string",
+      defaultValue: "",
     },
   ],
-}
+};

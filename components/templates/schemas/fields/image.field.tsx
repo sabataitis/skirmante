@@ -7,26 +7,31 @@ export const imageField = {
       name: "src",
       label: "Image Source",
       type: "image",
+      defaultValue: "/images/index.jpg"
     },
     {
       name: "alt",
       label: "Alt Text",
       type: "string",
+      defaultValue: "image alt"
     },
     {
-      name: "width",
-      label: "Image Width (px)",
-      type: "number",
-    },
-    {
-      name: "height",
-      label: "Image Height (px)",
-      type: "number",
-    },
-    {
-      label: "Roundness",
-      name: "roundness",
+      label: "Size",
+      name: "size",
       type: "string",
+      defaultValue: "medium",
+      options: [
+        { label: "Small", value: "small" },
+        { label: "Medium", value: "medium" },
+        { label: "Large", value: "large" },
+        { label: "Extra Large", value: "extraLarge" },
+      ],
+    },
+    {
+      name: "radius",
+      label: "Radius",
+      type: "string",
+      defaultValue: "rounded-none",
       options: [
         { label: "Full", value: "rounded-full" },
         { label: "Square", value: "rounded-xl" },
@@ -34,12 +39,13 @@ export const imageField = {
       ],
     },
     {
-      label: "Order",
       name: "order",
+      label: "Order",
       type: "string",
+      defaultValue: "order-first",
       options: [
-        { label: "Start", value: "1" },
-        { label: "End", value: "2" },
+        { label: "First", value: "order-first" },
+        { label: "Last", value: "order-last" },
       ],
     },
   ],
