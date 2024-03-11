@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
 import styles from "./header.module.css";
@@ -14,7 +13,7 @@ const Item = ({ item }) => {
       <Link href={`/${item.href}`}>
         <button
           data-tina-field={tinaField(item)}
-          className="bg-white text-primary rounded-full px-12 py-2 font-bold transition duration-300 ease-in-out transform hover:scale-105 "
+          className="bg-white text-primary rounded-full px-12 py-2 font-bold transform hover:scale-105 "
         >
           {item.label}
         </button>

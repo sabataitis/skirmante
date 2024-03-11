@@ -51,7 +51,6 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           )}
           {data.excerpt && (
             <h3 className="text-md sm:text-2xl font-extralight">
-              {" "}
               {data.excerpt}
             </h3>
           )}

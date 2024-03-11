@@ -20,6 +20,15 @@ const defaults = {
   p: (props) => {
     return <p className="text-lg sm:text-2xl sm:leading-10 my-2" {...props} />;
   },
+  a: (props) => {
+    return <a className="text-secondary font-bold underline text-lg sm:text-2xl" {...props} />;
+  },
+  ul: (props) => {
+    return <ul className="inline-block list-disc p-4" {...props} />;
+  },
+  li: (props) => {
+    return <li className="pl-4 text-lg sm:text-2xl sm:leading-10 my-2" {...props} />;
+  },
 };
 
 export const Markdown = ({

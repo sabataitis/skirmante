@@ -21,7 +21,7 @@ export const Buttons = ({
   };
 
   return (
-    <div className={`${className} flex items-center gap-4`}>
+    <div className={`${className} flex my-4 items-center gap-4`}>
       {buttons &&
         buttons.map(function (action, index) {
           return (

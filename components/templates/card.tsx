@@ -1,9 +1,8 @@
 import React from "react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { Template } from "tinacms";
 import { tinaField } from "tinacms/dist/react";
-import { PageBlocksCardTemplate } from "../../tina/__generated__/types";
-import { Button, Buttons, Container } from "../shared";
+import { AppImage, Button, Buttons, Container, Markdown } from "../shared";
+import { PageBlocksCard } from "../../tina/__generated__/types";
+import styles from "./styles/card.module.css";
 
 export const Card = ({
   className = "",
@@ -12,93 +11,57 @@ export const Card = ({
 }: {
   className?: string;
   actionsClassName?: string;
-  data: PageBlocksCardTemplate;
+  data: PageBlocksCard;
 }) => {
-  return (
-    <Container
-      className={`${className} mx-auto h-full rounded-xl ring ring-card bg-card`}
-      size="medium"
-    >
-      {data.text && (
-        <div
-          data-tina-field={tinaField(data, "text")}
-          className="sm:prose-2xl prose-xl"
-        >
-          <TinaMarkdown content={data.text} />
-        </div>
-      )}
-      {data.actions && (
-        <Buttons
-          className={actionsClassName}
-          buttons={data.actions as Button[]}
-        />
-      )}
-    </Container>
-  );
-};
+  // 19 is for 0.1 transparency
+  const bg = { backgroundColor: data.bgc + "19" || "none" };
 
-export const cardTemplateBlockSchema: Template = {
-  name: "cardTemplate",
-  label: "Card Template",
-  ui: {
-    previewSrc: "/blocks/content.png",
-    defaultItem: {
-      heading: "Heading",
-      body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-    },
-    itemProps: (item) => {
-      return {
-        label: item?.label,
-      };
-    },
-  },
-  fields: [
-    {
-      type: "string",
-      label: "Label",
-      name: "label",
-    },
-    {
-      type: "rich-text",
-      label: "Text",
-      name: "text",
-    },
-    {
-      label: "Actions",
-      name: "actions",
-      type: "object",
-      list: true,
-      ui: {
-        defaultItem: {
-          label: "Action Label",
-          type: "button",
-          style: "primary",
-          icon: true,
-          link: "/",
-        },
-        itemProps: (item) => ({ label: item.label }),
-      },
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Type",
-          name: "type",
-          type: "string",
-          options: [
-            { label: "Primary", value: "primary" },
-            { label: "Secondary", value: "secondary" },
-          ],
-        },
-        {
-          label: "Link",
-          name: "link",
-          type: "string",
-        },
-      ],
-    },
-  ],
+  const contentBlockAlignment = `flex gap-10 sm:flex-row flex-col items-center`;
+  const blockAlignment = `flex flex-col items-${data.alignment} || 'start'`;
+
+  return (
+    <div className={`${styles.card} my-6`} style={bg}>
+      <Container
+        className={`${className} ${blockAlignment} mx-auto`}
+        size="medium"
+      >
+        {data.card_heading && (
+          <h2
+            data-tina-field={tinaField(data, "card_heading")}
+            className="text-2xl sm:text-4xl font-bold mb-6"
+          >
+            {data.card_heading}
+          </h2>
+        )}
+        <div className={`${contentBlockAlignment}`}>
+          {data.image && (
+            <div className="flex justify-center p-6 sm:p-10">
+              <AppImage
+              className={`${data.image.roundness}`}
+                data={{
+                  src: data.image.src,
+                  alt: data.image.alt,
+                  height: data.image.height,
+                  width: data.image.width,
+                }}
+              />
+            </div>
+          )}
+          <Markdown
+            className={`text-${data.alignment || "left"}`}
+            data={data}
+            markdown={data.text}
+            field="text"
+          />
+        </div>
+
+        {data.buttons && (
+          <Buttons
+            className={actionsClassName}
+            buttons={data.buttons as Button[]}
+          />
+        )}
+      </Container>
+    </div>
+  );
 };
