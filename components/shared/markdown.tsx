@@ -21,14 +21,38 @@ const defaults = {
     return <p className="text-lg sm:text-2xl sm:leading-10 my-2" {...props} />;
   },
   a: (props) => {
-    return <a className="text-secondary font-bold underline text-lg sm:text-2xl" {...props} />;
+    return (
+      <a
+        className="text-secondary font-bold underline text-lg sm:text-2xl"
+        {...props}
+      />
+    );
   },
   ul: (props) => {
     return <ul className="inline-block list-disc p-4" {...props} />;
   },
   li: (props) => {
-    return <li className="pl-4 text-lg sm:text-2xl sm:leading-10 my-2" {...props} />;
+    return (
+      <li className="pl-4 text-lg sm:text-2xl sm:leading-10 my-2" {...props} />
+    );
   },
+  img: (props) => {
+    return (
+      <img className="mx-auto max-w-52 h-auto" src={props.url} />
+    );
+  },
+  SubstackNewsLetterSignUpForm: () => {
+    return (
+      <div className="py-10"> 
+      <iframe
+        src="https://skirmantesolutionfocus.substack.com/embed"
+        width="100%"
+        height="auto"
+        style={{ "border": `none`, "backgroundColor": "#78716c1a"}}
+      />
+      </div>
+    );
+  }
 };
 
 export const Markdown = ({

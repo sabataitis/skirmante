@@ -12,7 +12,7 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/index",
+        destination: "/home",
       },
       {
         source: "/admin",

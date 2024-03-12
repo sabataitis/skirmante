@@ -16,11 +16,11 @@ blocks:
           - label: 'Yes, I am ready'
             type: primary
         image:
-          src: ''
-          alt: ''
-          size: medium
+          src: /uploads/substack.png
+          alt: Befriend polar bear image
+          size: small
           radius: rounded-full
-        order: ''
+        order: reverse
         _template: card
       - card_heading: 5 Session Package
         text: |
@@ -35,11 +35,26 @@ blocks:
         buttons:
           - label: 'Yes, I am ready'
             type: primary
+        image:
+          src: /uploads/substack.png
+          alt: Befriend the polar bear image
+          size: small
+          radius: rounded-full
+        order: reverse
         _template: card
-      - card_heading: Newsletter
-        text: ''
+      - card_heading: Resources
+        text: |
+          # FREE
+
+          <SubstackNewsLetterSignUpForm />
         bgc: '#78716C'
         alignment: center
+        image:
+          src: /uploads/substack.png
+          alt: ''
+          size: small
+          radius: rounded-xl
+        order: reverse
         _template: card
     _template: columns
   - card_heading: Is solution focused approach for me?
@@ -87,15 +102,67 @@ blocks:
       radius: rounded-xl
     order: ''
     _template: card
-  - image_block_size: full
+  - card_heading: Work with me
+    text: >
+      Perhaps you already saw [a little bit of me](https://skirmante.com/about)
+      through my [videos and
+      blogs](https://skirmantesolutionfocus.substack.com/) and have a feeling
+      about my practice. There are many different 
+
+      modalities in the coaching profession, and every coach will bring their 
+
+      own energy, experience, and their 'self' into work. Take your time to 
+
+      explore and compare me with other coaches out there. Finding the right 
+
+      fit is important.
+    bgc: ''
+    _template: card
+  - card_heading: How do we start?
+    text: >
+      Before we start our coaching journey, let’s meet online for our [initial
+      call.](https://calendly.com/skirmantecoach/introductory-call)
+
+      The purpose of such call is to have a brief introduction to each other and
+      to see if we are good fit to work together.
+    bgc: '#7E22CE'
     image:
-      src: /uploads/formula.png
-      alt: Formula Of My Work
-    text: ''
-    alignment: center
+      src: /uploads/index.jpg
+      alt: Image of Skirmante
+      size: small
+      radius: rounded-full
+    order: ''
+    _template: card
+  - card_heading: 'Overview:'
+    text: >
+      ##
+
+
+      * Introduction
+
+      * What is coaching (you can find detailed [info
+      here](https://skirmante.com/about-coaching))
+
+      * Goal overview + brief coaching conversation
+
+      * Shall we work together?
+    _template: card
+  - card_heading: >-
+      Here are a few questions to think about for yourself that will help you to
+      prepare for our conversation:
+    text: >
+      * What would be your most desired outcome that you would like to achieve
+      from having coaching sessions with me?
+
+      * What personal qualities, habits and behaviors you might want to develop
+      to help you reach your goals?
+
+      * What questions you might have for me?
+    bgc: '#FFA500'
     buttons:
-      - label: Do some action
+      - label: Book an initial call with me
         type: primary
-    _template: imageBlock
+        link: 'https://calendly.com/skirmantecoach/introductory-call'
+    _template: card
 ---
 

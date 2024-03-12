@@ -22,13 +22,13 @@ const HeadingBlock = ({ props }: { props: PageBlocksCard }) => {
   );
 };
 
-const ImageContentBlock = ({ props }: { props: PageBlocksCard }) => {
+const ImageContentBlock = ({ props, className }: { props: PageBlocksCard, className?: string }) => {
   const { image, text, alignment, order } = props;
 
   const contentOrder = order ? "flex-wrap-reverse flex-row-reverse" : "";
 
   return (
-    <div className={`flex flex-wrap justify-end ${contentOrder} gap-4`}>
+    <div className={`flex flex-wrap justify-end ${className} ${contentOrder} gap-4`}>
       {image && image.src ? (
         <div className="px-10">
           <Img
@@ -69,16 +69,20 @@ const ButtonsBlock = ({ props }: { props: PageBlocksCard }) => {
 };
 
 export const Card = (props: Props) => {
-  const { data } = props;
+  const { data, contentClassName = "" } = props;
 
   // 19 is 0.1 transparency in hex
-  const bg = { backgroundColor: data.bgc + "19" || "none" };
+  const bg = { backgroundColor: "transparent" };
+
+  if(data.bgc) {
+      bg.backgroundColor = data.bgc + "19";
+  }
 
   return (
     <div className={`w-full h-full`} style={bg}>
       <Container className="flex flex-col gap-8" size="medium">
         <HeadingBlock props={data} />
-        <ImageContentBlock props={data} />
+        <ImageContentBlock className={contentClassName} props={data} />
         <ButtonsBlock props={data} />
       </Container>
     </div>

@@ -8,9 +8,15 @@ import { FiMenu } from "react-icons/fi";
 import { Socials } from "../shared";
 
 const Item = ({ item }) => {
+  const isExternalLink = item.href.startsWith("http");
+  const href =
+    item.href.startsWith("http") || item.href.startsWith("www")
+      ? item.href
+      : `${item.href}`;
+
   if (item.type === "button") {
     return (
-      <Link href={`/${item.href}`}>
+      <Link href={href} passHref={!!isExternalLink}>
         <button
           data-tina-field={tinaField(item)}
           className="bg-white text-primary rounded-full px-12 py-2 font-bold transform hover:scale-105 "
@@ -22,7 +28,11 @@ const Item = ({ item }) => {
   }
 
   return (
-    <Link data-tina-field={tinaField(item)} href={`/${item.href}`}>
+    <Link
+      data-tina-field={tinaField(item)}
+      href={href}
+      passHref={!!isExternalLink}
+    >
       {item.label}
     </Link>
   );
@@ -36,7 +46,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
       className={`flex justify-between bg-primary font-bold text-white px-4 py-2 ${styles.navbar}`}
     >
       <div className="flex items-center gap-2">
-        <Link href="/" className="text-xl">
+        <Link href="/home" className="text-xl">
           <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
         </Link>
         <Socials socials={data.socials} />
