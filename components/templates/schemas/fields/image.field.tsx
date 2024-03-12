@@ -38,15 +38,5 @@ export const imageField = {
         { label: "None", value: "rounded-none" },
       ],
     },
-    {
-      name: "order",
-      label: "Order",
-      type: "string",
-      defaultValue: "order-first",
-      options: [
-        { label: "First", value: "order-first" },
-        { label: "Last", value: "order-last" },
-      ],
-    },
   ],
 };

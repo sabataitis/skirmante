@@ -27,7 +27,16 @@ const schema: Template = {
     bgcField,
     alignmentField,
     buttonsField,
-    imageField
+    imageField,
+    {
+      name: "order",
+      label: "Content and Image Order",
+      type: "string",
+      defaultValue: "",
+      options: [
+        { label: "Reverse", value: "reverse" },
+      ],
+    },
   ],
 };
 
