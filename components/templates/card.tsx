@@ -35,10 +35,10 @@ export const Card = (props: Props) => {
           {data.image && (
             <div className={`${data.image.order} flex justify-center px-10`}>
               <Img
-                className={`${data.image.radius}`}
                 src={data.image.src}
                 alt={data.image.alt}
                 size={data.image.size}
+                radius={data.image.radius}
               />
             </div>
           )}

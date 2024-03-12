@@ -1,7 +1,14 @@
 import { tinaField } from "tinacms/dist/react";
 import styles from "./styles/hero.module.css";
 
-import { Button, Buttons, Container, Markdown, Img } from "../shared";
+import {
+  Button,
+  Buttons,
+  Container,
+  Markdown,
+  Img,
+  ImageSize,
+} from "../shared";
 import { PageBlocksHero } from "../../tina/__generated__/types";
 
 export const Hero = ({ data }: { data: PageBlocksHero }) => {
@@ -12,19 +19,20 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
       className={`${styles.hero} mx-auto grid grid-cols-1 lg:grid-cols-5 content-center items-center gap-6`}
     >
       <div className="lg:col-span-2">
-    data.image && (
-      <div
-        className="flex items-center justify-center"
-        data-tina-field={tinaField(data.image, "src")}
-      >
-        <Img
-          className={`bg-orange-500 border rounded-full sm:p-8 p-4 overflow-hidden shadow-lg`}
-          src={data.image.src}
-          alt={data.image.alt}
-          size="large"
-        />
-      </div>
-    )
+        {data.image && (
+          <div
+            className="flex items-center justify-center"
+            data-tina-field={tinaField(data.image, "src")}
+          >
+            <Img
+              className={`bg-orange-500 border sm:p-8 p-4`}
+              src={data.image.src}
+              alt={data.image.alt}
+              radius={data.image.radius}
+              size={data.image.size}
+            />
+          </div>
+        )}
       </div>
       <div className="lg:col-span-3 flex flex-col gap-4 justify-center">
         <div className="flex flex-col gap-4">
@@ -44,9 +52,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
             </h3>
           )}
         </div>
-        {data.text && (
-          <Markdown data={data} field="text" markdown={data.text} />
-        )}
+        {data.text && ( <Markdown data={data} field="text" markdown={data.text} />)}
         {data.buttons && <Buttons buttons={buttons} />}
       </div>
     </Container>
