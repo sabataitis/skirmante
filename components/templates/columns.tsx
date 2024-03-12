@@ -5,10 +5,7 @@ import { PageBlocksColumns } from "../../tina/__generated__/types";
 
 export const Columns = ({ data, }: { data: PageBlocksColumns }) => {
   return (
-    <Container
-      size="medium"
-      className={`grid sm:grid-flow-col auto-cols-fr grid-cols-1 gap-6`}
-    >
+    <Container size="medium" className="grid sm:grid-flow-col auto-cols-fr grid-cols-1 gap-6">
       {data.blocks
         ? data.blocks.map(function (block, i) {
             return (
