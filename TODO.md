@@ -11,17 +11,17 @@ Templates
     [*] Alignment (left, right, center)
     [*] Universal heading with fixed size and padding
     [*] Partial transparency of card to see bg
-    [] Image field
-        [] Alignment (left, right)
-        [] Roundness (full, square, none)
-    [] Fixed min size, centered, max 3 columns.
+    [*] Image field
+        [*] Alignment (left, right)
+        [*] Roundness (full, square, none)
+    [*] Fixed min size, centered, max 3 columns.
 
-[] Rich text
-    [] Add subscribe to substack template inside richtext
+[*] Rich text
 
-[] Image Block Template Full Screen
-    [] Buttons
-    [] Background text
+[*] Image Block Template Full Screen
+    [*] Buttons
+    [*] Background text
 
 [] Substack Integration
     [] Article slideshow
+    [] Add subscribe to substack template inside richtext

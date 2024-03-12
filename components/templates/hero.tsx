@@ -7,7 +7,6 @@ import {
   Container,
   Markdown,
   Img,
-  ImageSize,
 } from "../shared";
 import { PageBlocksHero } from "../../tina/__generated__/types";
 

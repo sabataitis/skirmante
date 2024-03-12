@@ -41,8 +41,9 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         </Link>
         <Socials socials={data.socials} />
       </div>
+
       {/* Desktop */}
-      <div className="items-center gap-4 font-bold hidden sm:flex text-md">
+      <div className="items-center gap-4 font-bold hidden lg:flex text-md">
         {data.nav.map((item) => (
           <Item key={`${item.label}`} item={item} />
         ))}
@@ -50,7 +51,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
 
       {/* Mobile */}
       <div
-        className="cursor-pointer flex items-center gap-4 font-bold sm:hidden text-md"
+        className="cursor-pointer flex items-center gap-4 font-bold lg:hidden text-md"
         onClick={() => setShow(!show)}
       >
         <FiMenu size="24" />
