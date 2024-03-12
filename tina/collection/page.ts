@@ -5,6 +5,7 @@ import type { Collection } from "tinacms";
 import  HeroSchema  from "../../components/templates/schemas/hero.schema";
 import  CardSchema from "../../components/templates/schemas/card.schema";
 import  ColumnsSchema from "../../components/templates/schemas/columns.schema";
+import  ImageBlockSchema from "../../components/templates/schemas/image-block.schema";
 
 const Page: Collection = {
   label: "Pages",
@@ -45,6 +46,7 @@ const Page: Collection = {
         HeroSchema,
         CardSchema,
         ColumnsSchema,
+        ImageBlockSchema
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         // featureBlockSchema,

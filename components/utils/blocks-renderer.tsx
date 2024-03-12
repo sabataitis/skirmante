@@ -3,6 +3,7 @@ import { tinaField } from "tinacms/dist/react";
 import { Columns } from "../templates/columns";
 import { Card } from "../templates/card";
 import { Hero } from "../templates/hero";
+import { ImageBlock } from "../templates/image-block";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
@@ -28,6 +29,8 @@ const Block = (block: PageBlocks) => {
       return <Card data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
+    case "PageBlocksImageBlock":
+      return <ImageBlock data={block} />;
     // case "PageBlocksFeatures":
     //   return <Features data={block} />;
     // case "PageBlocksTestimonial":

@@ -24,7 +24,7 @@ export const imageField = {
         { label: "Small", value: "small" },
         { label: "Medium", value: "medium" },
         { label: "Large", value: "large" },
-        { label: "Extra Large", value: "extraLarge" },
+        { label: "Extra Large", value: "extralarge" },
       ],
     },
     {

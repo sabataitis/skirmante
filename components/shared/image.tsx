@@ -12,7 +12,8 @@ export enum ImageSize {
   SMALL = "small",
   MEDIUM = "medium",
   LARGE = "large",
-  EXTRALARGE = "extralarge"
+  EXTRALARGE = "extralarge",
+  AUTO = "auto",
 }
 export type Radius = "rounded-full" | "rounded-xl" | "rounded-none";
 
@@ -28,6 +29,17 @@ export function Img(props: Props) {
 
   const width = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
   const height = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
+
+  if (size === ImageSize.AUTO) {
+    return (
+      <Image
+        className={`${className} ${radius}`}
+        src={src}
+        fill={true}
+        alt={alt}
+      />
+    );
+  }
 
   return (
     <Image
