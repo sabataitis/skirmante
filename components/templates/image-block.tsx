@@ -9,6 +9,9 @@ type Props = {
 export const ImageBlock = (props: Props) => {
   const { data } = props;
 
+console.info({props: props.data.text})
+
+
   return (
     <Container
       className={`relative sm:min-h-96 min-h-52`}
@@ -23,7 +26,7 @@ export const ImageBlock = (props: Props) => {
           alt={data.image.alt}
         />
       )}
-      {data.text && (
+      {data.text && data.text?.children?.length && (
         <div
           className={`w-full text-white absolute inset-0 bg-gray-700 bg-opacity-50 flex flex-col gap-6 items-${data.alignment} justify-center p-6`}
         >
