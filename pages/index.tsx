@@ -1,13 +1,10 @@
-import React from "react";
 import { InferGetStaticPropsType } from "next";
 import { useTina } from "tinacms/dist/react";
 import { client } from "../tina/__generated__/client";
 import { Layout } from "../components/layout/layout";
 import { Blocks } from "../components/utils/blocks-renderer";
 
-export default function DynamicPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
-) {
+export default function IndexPage( props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { data } = useTina(props);
 
   if (data?.global && data?.page) {
@@ -20,31 +17,14 @@ export default function DynamicPage(
   return null;
 }
 
-export const getStaticProps = async ({ params }) => {
-  console.info({ params });
-  const tinaProps = await client.queries.contentQuery({
-    relativePath: `${params.filename}.mdx`,
-  });
+export const getStaticProps = async () => {
+
+  const tinaProps = await client.queries.contentQuery({ relativePath: "index.mdx" });
   const props = {
     ...tinaProps,
     enableVisualEditing: process.env.VERCEL_ENV === "preview",
   };
   return {
     props: JSON.parse(JSON.stringify(props)) as typeof props,
-  };
-};
-
-export const getStaticPaths = async () => {
-  const pagesListData = await client.queries.pageConnection();
-
-  const paths = pagesListData.data.pageConnection?.edges?.map((page) => ({
-    params: { filename: page?.node?._sys.filename },
-  })) || [];
-
-console.info({paths});
-
-  return {
-    paths,
-    fallback: false,
   };
 };

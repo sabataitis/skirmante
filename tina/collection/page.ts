@@ -6,6 +6,7 @@ import  HeroSchema  from "../../components/templates/schemas/hero.schema";
 import  CardSchema from "../../components/templates/schemas/card.schema";
 import  ColumnsSchema from "../../components/templates/schemas/columns.schema";
 import  ImageBlockSchema from "../../components/templates/schemas/image-block.schema";
+import  SubstackArticlesSchema from "../../components/templates/schemas/substack-articles.schema";
 
 const Page: Collection = {
   label: "Pages",
@@ -46,7 +47,8 @@ const Page: Collection = {
         HeroSchema,
         CardSchema,
         ColumnsSchema,
-        ImageBlockSchema
+        ImageBlockSchema,
+        SubstackArticlesSchema,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         // featureBlockSchema,

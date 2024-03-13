@@ -8,12 +8,11 @@ module.exports = {
 
     return config;
   },
+    images: {
+        domains: ["substackcdn.com"]
+    },
   async rewrites() {
     return [
-      {
-        source: "/",
-        destination: "/home",
-      },
       {
         source: "/admin",
         destination: "/admin/index.html",

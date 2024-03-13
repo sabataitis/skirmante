@@ -46,7 +46,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
       className={`flex justify-between bg-primary font-bold text-white px-4 py-2 ${styles.navbar}`}
     >
       <div className="flex items-center gap-2">
-        <Link href="/home" className="text-xl">
+        <Link href="/" className="text-xl">
           <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
         </Link>
         <Socials socials={data.socials} />

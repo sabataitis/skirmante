@@ -4,6 +4,7 @@ import { Columns } from "../templates/columns";
 import { Card } from "../templates/card";
 import { Hero } from "../templates/hero";
 import { ImageBlock } from "../templates/image-block";
+import { SubstackArticles } from "../templates/substack-articles";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
@@ -31,6 +32,8 @@ const Block = (block: PageBlocks) => {
       return <Hero data={block} />;
     case "PageBlocksImageBlock":
       return <ImageBlock data={block} />;
+      case "PageBlocksSubstack_articles":
+          return <SubstackArticles/>
     // case "PageBlocksFeatures":
     //   return <Features data={block} />;
     // case "PageBlocksTestimonial":
