@@ -5,7 +5,8 @@
     "nav": [
       {
         "href": "services",
-        "label": "Services"
+        "label": "Services",
+        "type": "text"
       },
       {
         "href": "about",
@@ -42,6 +43,10 @@
       "linkedin": "linkedin.com/in/skirmante-sabataityte/"
     },
     "references": [
+      {
+        "href": "privacy",
+        "label": "Privacy Statement"
+      },
       {
         "href": "about",
         "label": "About"

@@ -10,22 +10,27 @@ export const ImageBlock = (props: Props) => {
   const { data } = props;
 
   return (
-      <Container className={`relative sm:min-h-96 min-h-52`} size={data.image_block_size}>
-        {data.image && (
-          <Img
-            className="object-contain"
-            size="auto"
-            src={data.image.src}
-            radius="rounded-none"
-            alt={data.image.alt}
-          />
-        )}
-        <div className={`w-full text-white absolute inset-0 bg-gray-700 bg-opacity-50 flex flex-col gap-6 items-${data.alignment} justify-center p-6`}>
-          {data.text && (
-            <Markdown data={data} field="text" markdown={data.text} />
-          )}
+    <Container
+      className={`relative sm:min-h-96 min-h-52`}
+      size={data.image_block_size}
+    >
+      {data.image && (
+        <Img
+          className="object-contain"
+          size="auto"
+          src={data.image.src}
+          radius="rounded-none"
+          alt={data.image.alt}
+        />
+      )}
+      {data.text && (
+        <div
+          className={`w-full text-white absolute inset-0 bg-gray-700 bg-opacity-50 flex flex-col gap-6 items-${data.alignment} justify-center p-6`}
+        >
+          <Markdown data={data} field="text" markdown={data.text} />
           {data.buttons && <Buttons buttons={data.buttons as Button[]} />}
         </div>
-      </Container>
+      )}
+    </Container>
   );
 };

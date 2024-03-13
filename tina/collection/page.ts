@@ -15,12 +15,23 @@ const Page: Collection = {
   format: "mdx",
   ui: {
     router: ({ document }) => {
-        console.info({document})
       if (document._sys.filename === "index") {
         return `/`;
       }
-      if (document._sys.filename === "services") {
+      else if (document._sys.filename === "about") {
+        return `/about`;
+      }
+      else if (document._sys.filename === "services") {
         return `/services`;
+      }
+      else if (document._sys.filename === "formula") {
+        return `/formula`;
+      }
+      else if (document._sys.filename === "about-coaching") {
+        return `/about-coaching`;
+      }
+      else if (document._sys.filename === "privacy") {
+        return `/privacy`;
       }
       return undefined;
     },
