@@ -38,20 +38,6 @@ const defaults = {
       <img className="mx-auto max-w-52 h-auto" src={props.url} />
     );
   },
-  SubstackNewsLetterSignUpForm: () => {
-    return (
-      <div className="py-6"> 
-      <iframe
-        src="https://skirmantesolutionfocus.substack.com/embed"
-        width="100%"
-        height="auto"
-        frameBorder="0"
-        scrolling="no"
-        style={{ "border": `1px solid #eee`, "background": "white"}}
-      />
-      </div>
-    );
-  }
 };
 
 export const Markdown = ({
