@@ -37,12 +37,9 @@ export const SubstackArticles = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {articles.slice(0, 3).map((post, index) => (
           <a key={index} href={post.canonical_url}>
-            <div
-              key={index}
-              className="items-center bg-gray-100 p-4 rounded-lg transition transform duration-75"
-            >
+            <div key={index} className="items-center bg-card p-4 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-700 mb-2">{post.subtitle}</p>
+              <p className="text-black mb-2">{post.subtitle}</p>
               <Img
                 src={post.cover_image}
                 alt="Substack Article Cover Image"

@@ -8,9 +8,13 @@ module.exports = {
 
     return config;
   },
-    images: {
-        domains: ["substackcdn.com"]
-    },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
+  images: {
+    domains: ["substackcdn.com"],
+  },
   async rewrites() {
     return [
       {

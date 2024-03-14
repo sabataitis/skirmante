@@ -24,7 +24,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
             data-tina-field={tinaField(data.image, "src")}
           >
             <Img
-              className={`bg-orange-500 border sm:p-8 p-4`}
+              className={`bg-secondary border sm:p-8 p-4`}
               src={data.image.src}
               alt={data.image.alt}
               radius={data.image.radius}

@@ -16,8 +16,8 @@ export const Buttons = ({
   buttons: Button[];
 }) => {
   const styles = {
-    primary: "bg-primary text-white hover:bg-purple-600",
-    secondary: "bg-secondary text-black hover:bg-orange-400",
+    primary: "bg-primary text-white hover:bg-white hover:text-black",
+    secondary: "bg-secondary text-black hover:bg-white",
   };
 
   return (

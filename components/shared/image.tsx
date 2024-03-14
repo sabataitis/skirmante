@@ -36,7 +36,7 @@ export function Img(props: Props) {
         className={`${className} ${radius}`}
         src={src}
         fill={true}
-        alt={alt}
+        alt={alt || "image-alt"}
       />
     );
   }
@@ -47,7 +47,7 @@ export function Img(props: Props) {
       src={src}
       width={width}
       height={height}
-      alt={alt}
+      alt={alt || "image-alt"}
     />
   );
 }

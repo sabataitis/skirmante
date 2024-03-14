@@ -7,9 +7,9 @@ import { Blocks } from "../components/utils/blocks-renderer";
 import Head from "next/head";
 import { defaultDescription, defaultTitle } from "../components/shared/seo";
 
-export default function DynamicPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
-) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+export default function DynamicPage(props: Props) {
   const { data } = useTina(props);
 
   if (data?.global && data?.page) {
