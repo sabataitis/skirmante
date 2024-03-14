@@ -24,6 +24,9 @@ const sizeMap = {
   [ImageSize.EXTRALARGE]: 800,
 };
 
+// remove w;h;q props from url as assets.tina.io doesn't support those (look into cloudflare hosting)
+const imageLoader = ({ src }) => src;
+
 export function Img(props: Props) {
   const { src, alt, size, radius, className = "" } = props;
 
@@ -34,9 +37,11 @@ export function Img(props: Props) {
     return (
       <Image
         className={`${className} ${radius}`}
+        loader={imageLoader}
         src={src}
         fill={true}
         alt={alt || "image-alt"}
+        unoptimized
       />
     );
   }
@@ -44,10 +49,12 @@ export function Img(props: Props) {
   return (
     <Image
       className={`${className} ${radius}`}
+      loader={imageLoader}
       src={src}
       width={width}
       height={height}
       alt={alt || "image-alt"}
+      unoptimized
     />
   );
 }

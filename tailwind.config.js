@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
-  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [ "./pages/**/*.tsx", "./components/**/*.tsx"],
   theme: {
     colors: {
       black: colors.black,
@@ -11,6 +11,7 @@ module.exports = {
       primary: "#7e22ce",
       secondary: "#ffa500",
     },
+    extend: {},
   },
   plugins: [require("@tailwindcss/typography")],
 };

@@ -13,7 +13,10 @@ module.exports = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["substackcdn.com"],
+    domains: [
+        "substackcdn.com",
+        "assets.tina.io"
+    ],
   },
   async rewrites() {
     return [
