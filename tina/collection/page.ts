@@ -39,12 +39,20 @@ const Page: Collection = {
   fields: [
     {
       type: "string",
-      label: "Title",
+      label: "Page Title",
       name: "title",
-      description:
-        "The title of the page. This is used to display the title in the CMS",
-      isTitle: true,
       required: true,
+      isTitle: true
+    },
+    {
+      type: "string",
+      label: "[SEO] Title",
+      name: "seo_title",
+    },
+    {
+      type: "string",
+      label: "[SEO] Description",
+      name: "seo_description",
     },
     {
       type: "object",

@@ -22,10 +22,7 @@ const defaults = {
   },
   a: (props) => {
     return (
-      <a
-        className="text-secondary font-bold underline text-lg sm:text-2xl"
-        {...props}
-      />
+      <a className="text-secondary font-bold underline text-lg sm:text-2xl" href={props.url} />
     );
   },
   ul: (props) => {
@@ -43,12 +40,14 @@ const defaults = {
   },
   SubstackNewsLetterSignUpForm: () => {
     return (
-      <div className="py-10"> 
+      <div className="py-6"> 
       <iframe
         src="https://skirmantesolutionfocus.substack.com/embed"
         width="100%"
         height="auto"
-        style={{ "border": `none`, "backgroundColor": "#78716c1a"}}
+        frameBorder="0"
+        scrolling="no"
+        style={{ "border": `1px solid #eee`, "background": "white"}}
       />
       </div>
     );

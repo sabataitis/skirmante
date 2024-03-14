@@ -1,0 +1,2 @@
+export const defaultTitle = "skirmante.com | Solution Focused Coaching";
+export const defaultDescription = "Hi, my name is Skirmante, I am a solution focused coach helping my clients to create change for better, happier life. My coaching style comes from Solution Focused approach and is topped with highly effective applied neuroscience tools. Our work together in coaching sessions is personalized and takes shape around your specific desired outcome.";
