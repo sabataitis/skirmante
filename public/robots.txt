@@ -1,0 +1,3 @@
+# Block crawlers for /admin
+Uyser-agent: *
+Dissalow: /admin/
