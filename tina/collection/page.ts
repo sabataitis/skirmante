@@ -1,6 +1,4 @@
 import type { Collection } from "tinacms";
-// import { testimonialBlockSchema } from "../../components/blocks/testimonial";
-// import { featureBlockSchema } from "../../components/blocks/features";
 
 import  HeroSchema  from "../../components/templates/schemas/hero.schema";
 import  CardSchema from "../../components/templates/schemas/card.schema";
@@ -68,10 +66,6 @@ const Page: Collection = {
         ColumnsSchema,
         ImageBlockSchema,
         SubstackArticlesSchema,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // featureBlockSchema,
-        // testimonialBlockSchema,
       ],
     },
   ],
