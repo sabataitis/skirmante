@@ -10,7 +10,7 @@ export const Container = ({ children, size = "default", className = "" }) => {
   };
 
   return (
-    <div className={`mx-auto min-h-full ${sizes[size]} ${className}`}>
+    <div className={`mx-auto ${sizes[size]} ${className}`}>
       {children}
     </div>
   );

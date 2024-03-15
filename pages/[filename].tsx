@@ -5,9 +5,12 @@ import { client } from "../tina/__generated__/client";
 import { Layout } from "../components/layout/layout";
 import { Blocks } from "../components/utils/blocks-renderer";
 import Head from "next/head";
-import { defaultDescription, defaultTitle } from "../components/shared/seo";
+import { defaultDescription, defaultTitle } from "../components/shared";
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+import fs from "node:fs";
+import path from "node:path";
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function DynamicPage(props: Props) {
   const { data } = useTina(props);
@@ -32,16 +35,31 @@ export default function DynamicPage(props: Props) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const tinaProps = await client.queries.contentQuery({
-    relativePath: `${params.filename}.mdx`,
-  });
-  const props = {
-    ...tinaProps,
-    enableVisualEditing: process.env.VERCEL_ENV === "preview",
-  };
-  return {
-    props: JSON.parse(JSON.stringify(props)) as typeof props,
-  };
+  try {
+    // read pages dir to check if page exist
+    const files =
+      fs.readdirSync(process.cwd() + "/content/pages", "utf8") || [];
+    const pages = files.map((f) => path.parse(f).name);
+
+    if (!pages.includes(params?.filename)) {
+      return { notFound: true };
+    }
+
+    const tinaProps = await client.queries.contentQuery({
+      relativePath: `${params.filename}.mdx`,
+    });
+
+    const props = {
+      ...tinaProps,
+      enableVisualEditing: process.env.VERCEL_ENV === "preview",
+    };
+
+    return {
+      props: JSON.parse(JSON.stringify(props)) as typeof props,
+    };
+  } catch (e) {
+    return { notFound: true };
+  }
 };
 
 export const getStaticPaths = async () => {

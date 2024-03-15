@@ -6,8 +6,16 @@ type Props = {
   data: PageBlocksImageBlock;
 };
 
+const alignments = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
+};
+
 export const ImageBlock = (props: Props) => {
   const { data } = props;
+
+  const hasText = data.text && data.text?.children?.length > 0;
 
   return (
     <Container
@@ -23,9 +31,11 @@ export const ImageBlock = (props: Props) => {
           alt={data.image.alt}
         />
       )}
-      {data.text && data.text?.children?.length && (
+      {hasText && (
         <div
-          className={`w-full text-white absolute inset-0 bg-gray-700 bg-opacity-50 flex flex-col gap-6 items-${data.alignment} justify-center p-6`}
+          className={`w-full text-white absolute inset-0 bg-gray-700 bg-opacity-50 flex flex-col gap-6 ${
+            alignments[data.alignment]
+          } justify-center p-6`}
         >
           <Markdown data={data} field="text" markdown={data.text} />
           {data.buttons && <Buttons buttons={data.buttons as Button[]} />}

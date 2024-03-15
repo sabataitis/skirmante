@@ -2,7 +2,12 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
-  content: [ "./pages/**/*.tsx", "./components/**/*.tsx"],
+  content: [ 
+      "./pages/*.tsx",
+      "./components/layout/*.tsx",
+      "./components/templates/*.tsx",
+      "./components/shared/components/*.tsx"
+  ],
   theme: {
     colors: {
       black: colors.black,

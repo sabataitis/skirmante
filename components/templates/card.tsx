@@ -8,13 +8,19 @@ type Props = {
   contentClassName?: string;
 };
 
+const textAlignments = {
+    "left": "text-left",
+    "center": "text-center",
+    "right": "text-right",
+}
+
 const HeadingBlock = ({ props }: { props: PageBlocksCard }) => {
   const { card_heading, alignment } = props;
 
   if (!card_heading) return <div></div>;
 
   return (
-    <div className={`text-${alignment}`}>
+    <div className={`${textAlignments[alignment]}`}>
       <h2 data-tina-field={tinaField(props, "card_heading")} className="text-3xl sm:text-4xl font-bold">
         {card_heading}
       </h2>
@@ -43,7 +49,7 @@ const ImageContentBlock = ({ props, className }: { props: PageBlocksCard, classN
       )}
       {text ? (
         <Markdown
-          className={`flex-1 text-${alignment}`}
+          className={`flex-1 ${textAlignments[alignment]}`}
           data={props}
           markdown={text}
           field="text"
