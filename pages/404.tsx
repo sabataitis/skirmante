@@ -1,5 +1,5 @@
 import { Layout } from "../components/layout/layout";
-import { Buttons, Container, Heading } from "../components/shared";
+import { Buttons, Container } from "../components/shared";
 
 export default function FourOhFour() {
   return (
@@ -8,7 +8,7 @@ export default function FourOhFour() {
         size="large"
         className="h-screen mx-auto flex flex-col gap-4 items-center"
       >
-        <Heading size="large">404</Heading>
+        <h1 className="font-bold text-3xl sm:text-6xl">404</h1>
         <p className="prose-xl">Oops! It seems there's nothing here.</p>
         <Buttons buttons={[{ type: "primary", label: "Go Back", link: "" }]} />
       </Container>

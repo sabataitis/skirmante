@@ -1,13 +1,24 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  mode: "jit",
   content: [ 
       "./pages/*.tsx",
       "./components/layout/*.tsx",
       "./components/templates/*.tsx",
       "./components/shared/components/*.tsx"
   ],
+    safeList: [
+        'text-left',
+        'text-center',
+        'text-right',
+        'sm:grid-flow-col',
+        'grid-flow-col',
+        'sm:grid-flow-row',
+        'grid-flow-row',
+        'auto-cols-auto',
+        'auto-cols-min',
+        'auto-cols-max',
+    ],
   theme: {
     colors: {
       black: colors.black,

@@ -27,17 +27,13 @@ const Block = (block: PageBlocks) => {
     case "PageBlocksColumns":
       return <Columns data={block} />;
     case "PageBlocksCard":
-      return <Card data={block} />;
+      return <Card layout={{content: "grid grid-flow-col auto-cols-auto"}} data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksImageBlock":
       return <ImageBlock data={block} />;
       case "PageBlocksSubstack_articles":
           return <SubstackArticles/>
-    // case "PageBlocksFeatures":
-    //   return <Features data={block} />;
-    // case "PageBlocksTestimonial":
-    //   return <Testimonial data={block} />;
     default:
       return null;
   }

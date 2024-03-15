@@ -11,8 +11,8 @@ export const Columns = ({ data, }: { data: PageBlocksColumns }) => {
             return (
               <div key={i} data-tina-field={tinaField(block)}>
                   <Card 
-                  data={block as any} 
-                  contentClassName={`lg:grid-flow-row justify-${block.alignment}`}
+                  data={block} 
+                  layout={{ content: `grid grid-rows-1 sm:grid-rows-2 justify-${block.alignment}`}} 
                   />
               </div>
             );
