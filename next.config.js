@@ -21,6 +21,10 @@ module.exports = {
   async rewrites() {
     return [
       {
+        source: "/",
+        destination: "/index",
+      },
+      {
         source: "/admin",
         destination: "/admin/index.html",
       },
