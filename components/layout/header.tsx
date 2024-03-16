@@ -76,7 +76,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           show ? "max-h-80 visible" : "max-h-0 invisible"
         }`}
       >
-        <div class="flex flex-col items-center gap-4 p-4">
+        <div className="flex flex-col items-center gap-4 p-4">
           {data.nav.map((item) => (
             <Item key={`${item.label}`} item={item} />
           ))}

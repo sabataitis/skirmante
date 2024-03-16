@@ -27,7 +27,7 @@ const Block = (block: PageBlocks) => {
     case "PageBlocksColumns":
       return <Columns data={block} />;
     case "PageBlocksCard":
-      return <Card layout={{content: "grid grid-flow-col auto-cols-auto"}} data={block} />;
+      return <Card data={block} />;
     case "PageBlocksHero":
       return <Hero data={block} />;
     case "PageBlocksImageBlock":

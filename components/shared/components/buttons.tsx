@@ -14,7 +14,7 @@ const styles = {
 };
 
 function isExternalLink(button: Button) {
-  button.link.startsWith("http") || button.link.startsWith("www");
+  return button.link.startsWith("http") || button.link.startsWith("www");
 }
 
 const base =
