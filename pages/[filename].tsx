@@ -36,15 +36,6 @@ export default function DynamicPage(props: Props) {
 
 export const getStaticProps = async ({ params }) => {
   try {
-    // read pages dir to check if page exist
-    const files =
-      fs.readdirSync(process.cwd() + "/content/pages", "utf8") || [];
-    const pages = files.map((f) => path.parse(f).name);
-
-    if (!pages.includes(params?.filename)) {
-      return { notFound: true };
-    }
-
     const tinaProps = await client.queries.contentQuery({
       relativePath: `${params.filename}.mdx`,
     });
@@ -63,15 +54,15 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const pagesListData = await client.queries.pageConnection();
+  const files = fs.readdirSync(process.cwd() + "/content/pages", "utf8") || [];
+  const pages = files.map((f) => path.parse(f).name);
 
-  const paths =
-    pagesListData.data.pageConnection?.edges?.map((page) => ({
-      params: { filename: page?.node?._sys.filename },
-    })) || [];
+  const paths = pages.map((page) => {
+    return { params: { filename: page } };
+  });
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: false,
   };
 };

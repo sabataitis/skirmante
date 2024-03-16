@@ -9,30 +9,26 @@ import styles from "./styles/card.module.css";
 
 type Props = {
   data: PageBlocksCard | PageBlocksColumnsBlocksCard;
-  layout: {
-    content?: string;
-    heading?: string;
-    buttons?: string;
-  };
+  flow: "column" | "row";
+};
+
+const flexAlignments = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
 };
 
 const textAlignments = {
-  left: "text-left",
+  start: "text-start",
   center: "text-center",
-  right: "text-right",
+  end: "text-end",
 };
 
-const HeadingBlock = ({
-  props,
-  className = "",
-}: {
-  props: PageBlocksCard | PageBlocksColumnsBlocksCard;
-  className?: string;
-}) => {
+const HeadingBlock = ({ props }) => {
   if (!props.card_heading) return <div></div>;
 
   return (
-    <div className={className}>
+    <div className={`${textAlignments[props.alignment]}`}>
       <h2
         data-tina-field={tinaField(props, "card_heading")}
         className="text-3xl sm:text-4xl font-bold"
@@ -43,21 +39,28 @@ const HeadingBlock = ({
   );
 };
 
-const ImageContentBlock = ({
-  props,
-  className = "",
-}: {
-  props: PageBlocksCard | PageBlocksColumnsBlocksCard;
-  className?: string;
-}) => {
-  const { image, text, alignment, order } = props;
+const ImageContentBlock = ({ props, flow = "row" }) => {
+  const { image, text, order, alignment } = props;
 
-  const ordering = order ? "order-last" : "order-first";
+  let containerClasses = "flex gap-4" + " " + flexAlignments[alignment] + " ";
+
+  switch (flow) {
+    case "row": {
+      containerClasses += order
+        ? "sm:flex-row-reverse flex-col-reverse"
+        : "sm:flex-row flex-col";
+      break;
+    }
+    case "column": {
+      containerClasses += order ? "flex-col-reverse" : "flex-col";
+      break;
+    }
+  }
 
   return (
-    <div className={`gap-4 ${className}`}>
-      {image && image.src ? (
-        <div className={`${ordering} m-auto px-10`}>
+    <div className={`${containerClasses}`}>
+      {image?.src && (
+        <div className="flex justify-center px-10">
           <Img
             src={image.src}
             alt={image.alt}
@@ -65,46 +68,35 @@ const ImageContentBlock = ({
             radius={image.radius}
           />
         </div>
-      ) : (
-        <div> </div>
       )}
-      {text ? (
+      {text && (
         <Markdown
           className={`flex-1 ${textAlignments[alignment]}`}
           data={props}
           markdown={text}
           field="text"
         />
-      ) : (
-        <div> </div>
       )}
     </div>
   );
 };
 
-const ButtonsBlock = ({
-  props,
-  className = "",
-}: {
-  props: PageBlocksCard | PageBlocksColumnsBlocksCard;
-  className?: string;
-}) => {
+const ButtonsBlock = ({ props }) => {
   const { buttons, alignment } = props;
 
-  const align = `justify-${alignment}`;
-
   if (!buttons) {
-    return <div> </div>;
+    return null;
   }
+
   return (
-    <div className={`${className} ${align} flex`}>
+    <div className={`flex flex-col ${flexAlignments[alignment]}`}>
       <Buttons buttons={buttons as Button[]} />
     </div>
   );
 };
 
 export const Card = (props: Props) => {
-  const { data, layout = {} } = props;
+  const { data, flow = "row" } = props;
 
   // 19 is 0.1 transparency in hex
   const bg = { backgroundColor: "transparent" };
@@ -113,17 +105,12 @@ export const Card = (props: Props) => {
     bg.backgroundColor = data.bgc + "19";
   }
 
-  const alignment = textAlignments[data.alignment];
-
   return (
     <div className="h-full" style={bg}>
       <Container className={`${styles.card}`} size="medium">
-        <HeadingBlock
-          className={`${layout.heading} ${alignment}`}
-          props={data}
-        />
-        <ImageContentBlock className={layout.content} props={data} />
-        <ButtonsBlock className={layout.buttons} props={data} />
+        <HeadingBlock props={data} />
+        <ImageContentBlock flow={flow} props={data} />
+        <ButtonsBlock props={data} />
       </Container>
     </div>
   );

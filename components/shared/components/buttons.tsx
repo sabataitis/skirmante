@@ -8,33 +8,38 @@ export type Button = {
   link: string;
 };
 
-export const Buttons = ({
-  className = "",
-  buttons,
-}: {
-  className?: string;
-  buttons: Button[];
-}) => {
-  const styles = {
-    primary: "bg-primary text-white hover:bg-white hover:text-black",
-    secondary: "bg-secondary text-black hover:bg-white",
-  };
+const styles = {
+  primary: "bg-primary text-white",
+  secondary: "bg-secondary text-black",
+};
+
+function isExternalLink(button: Button) {
+  button.link.startsWith("http") || button.link.startsWith("www");
+}
+
+const base =
+  "rounded-full prose-lg py-3 px-12 font-bold transition duration-300 hover:scale-110";
+
+function Button({ button }) {
+  const field = tinaField(button);
+  const btnClass = `${base} ${styles[button.type]}`;
 
   return (
-    <div className={`${className} flex sm:flex-row flex-col items-center gap-4`}>
-      {buttons &&
-        buttons.map(function (action, index) {
-          return (
-            <Link key={index} href={action.link ? action.link : "/"}>
-              <button
-                data-tina-field={tinaField(action)}
-                className={`${ styles[action.type]} prose-lg rounded-full px-12 py-3 font-bold transition duration-300 ease-in-out transform hover:scale-105`} 
-              >
-                {action.label}
-              </button>
-            </Link>
-          );
-        })}
+    <Link href={button.link} passHref={isExternalLink(button)}>
+      <button data-tina-field={field} className={btnClass}>
+        {button.label}
+      </button>
+    </Link>
+  );
+}
+
+export const Buttons = ({ buttons }: { buttons: Button[] }) => {
+  if (!buttons.length) return null;
+  return (
+    <div className="flex flex-col sm:flex-row items-center gap-4">
+      {buttons.map((button, index) => {
+        return <Button key={index} button={button} />
+      })}
     </div>
   );
 };

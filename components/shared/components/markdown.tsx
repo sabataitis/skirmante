@@ -22,7 +22,7 @@ const defaults = {
   },
   a: (props) => {
     return (
-      <a className="text-secondary font-bold underline text-lg sm:text-2xl" href={props.url} />
+      <a className="text-secondary font-bold underline" href={props.url} {...props} />
     );
   },
   ul: (props) => {
