@@ -50,7 +50,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const files = fs.readdirSync(process.cwd() + "/content/pages", "utf8") || [];
-  const pages = files.map((f) => path.parse(f).name);
+  const pages = files.map((f) => path.parse(f).name).filter(f=> f !== "index");
 
   const paths = pages.map((page) => {
     return { params: { filename: page } };
@@ -58,6 +58,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: false,
   };
 };
