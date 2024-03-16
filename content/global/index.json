@@ -52,7 +52,7 @@
         "label": "About"
       },
       {
-        "href": "/services",
+        "href": "services",
         "label": "Services"
       }
     ]
