@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 
 import { FiMenu } from "react-icons/fi";
 import { Socials } from "../shared";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Item = ({ item }) => {
   const isExternalLink = item.href.startsWith("http");

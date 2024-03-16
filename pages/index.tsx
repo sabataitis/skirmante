@@ -5,29 +5,28 @@ import { Layout } from "../components/layout/layout";
 import { Blocks } from "../components/utils/blocks-renderer";
 import FourOhFour from "./404";
 
-export default function IndexPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function IndexPage(
+  props: InferGetStaticPropsType<typeof getStaticProps>,
+) {
   const { data } = useTina(props);
+  console.info({ status: "index", data: data, props });
 
-  if (data?.global && data?.page) {
-    return (
-      <Layout data={data.global}>
-        <Blocks {...data.page} />
-      </Layout>
-    );
+  if (!data?.page) {
+    return <FourOhFour />;
   }
-  console.error({data});
-
-  return <FourOhFour/>
+  return (
+    <Layout>
+      <Blocks {...data.page} />
+    </Layout>
+  );
 }
 
 export const getStaticProps = async () => {
-  const tinaProps = await client.queries.contentQuery({ relativePath: "index.mdx" });
-  const props = {
-    ...tinaProps,
-    enableVisualEditing: process.env.VERCEL_ENV === "preview",
-  };
-  console.info({props});
+  const tinaProps = await client.queries.contentQuery({
+    relativePath: "index.mdx",
+  });
+
   return {
-    props: JSON.parse(JSON.stringify(props)) as typeof props,
+    props: JSON.parse(JSON.stringify({ ...tinaProps })) as typeof tinaProps,
   };
 };

@@ -15,7 +15,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export default function DynamicPage(props: Props) {
   const { data } = useTina(props);
 
-  if (data?.global && data?.page) {
+  if (data?.page) {
     return (
       <>
         <Head>
@@ -25,7 +25,7 @@ export default function DynamicPage(props: Props) {
             content={`${data.page.seo_description || defaultDescription}`}
           />
         </Head>
-        <Layout data={data.global}>
+        <Layout>
           <Blocks {...data.page} />
         </Layout>
       </>
@@ -40,13 +40,8 @@ export const getStaticProps = async ({ params }) => {
       relativePath: `${params.filename}.mdx`,
     });
 
-    const props = {
-      ...tinaProps,
-      enableVisualEditing: process.env.VERCEL_ENV === "preview",
-    };
-
     return {
-      props: JSON.parse(JSON.stringify(props)) as typeof props,
+      props: JSON.parse(JSON.stringify({ ...tinaProps })) as typeof tinaProps,
     };
   } catch (e) {
     return { notFound: true };
@@ -63,6 +58,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };

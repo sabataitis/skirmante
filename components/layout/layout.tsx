@@ -8,7 +8,6 @@ import styles from "./layout.module.css";
 import { Inter } from "next/font/google";
 
 type Props = {
-  data?: Omit<Global, "id" | "_sys" | "_values">;
   children: React.ReactNode;
 };
 
@@ -18,20 +17,22 @@ const inter = Inter({
 });
 
 export const Layout = (props: Props) => {
-  const { data = layoutData, children } = props;
+  const { children } = props;
 
-  const cover_image = { backgroundImage: `url(${data?.bgImageUrl || ""})` };
+  const global = layoutData;
+
+  const cover_image = { backgroundImage: `url(${global?.bgImageUrl || ""})` };
 
   return (
     <div className={`${inter.className}`}>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Header data={data?.header} />
+      <Header data={global?.header} />
       <main style={cover_image} className={`${styles.bg}`}>
         {children}
       </main>
-      <Footer data={data?.footer} />
+      <Footer data={global?.footer} />
     </div>
   );
 };
