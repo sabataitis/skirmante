@@ -10,9 +10,9 @@ const Global: Collection = {
   },
   fields: [
     {
-      name: "bgImageUrl",
-      label: "Background Image Url",
-      type: "string",
+      name: "coverImage",
+      label: "Background Cover Image",
+      type: "image",
     },
     {
       type: "object",

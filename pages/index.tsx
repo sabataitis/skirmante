@@ -9,7 +9,6 @@ export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
   const { data } = useTina(props);
-  console.info({ status: "index", data: data, props });
 
   if (!data?.page) {
     return <FourOhFour />;

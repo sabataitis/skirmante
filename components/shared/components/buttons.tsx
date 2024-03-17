@@ -14,23 +14,28 @@ const styles = {
 };
 
 function isExternalLink(button: Button) {
-  return button.link.startsWith("http") || button.link.startsWith("www");
+  return button?.link?.startsWith("http") || button?.link?.startsWith("www");
 }
 
 const base =
-  "rounded-full prose-lg py-3 px-12 font-bold transition duration-300 hover:scale-110";
+  "rounded-full prose-lg py-3 sm:px-12 px-6 font-bold transition duration-300 hover:scale-110";
 
 function Button({ button }) {
   const field = tinaField(button);
   const btnClass = `${base} ${styles[button.type]}`;
 
-  return (
-    <Link href={button.link} passHref={isExternalLink(button)}>
-      <button data-tina-field={field} className={btnClass}>
-        {button.label}
-      </button>
-    </Link>
-  );
+  if (button?.link) {
+    return (
+      <Link
+        className={btnClass}
+        href={button.link}
+        passHref={isExternalLink(button)}
+      >
+        <button data-tina-field={field}>{button.label}</button>
+      </Link>
+    );
+  }
+  return null;
 }
 
 export const Buttons = ({ buttons }: { buttons: Button[] }) => {
@@ -38,7 +43,7 @@ export const Buttons = ({ buttons }: { buttons: Button[] }) => {
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4">
       {buttons.map((button, index) => {
-        return <Button key={index} button={button} />
+        return <Button key={index} button={button} />;
       })}
     </div>
   );

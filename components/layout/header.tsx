@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 
 import { FiMenu } from "react-icons/fi";
 import { Socials } from "../shared";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Item = ({ item }) => {
   const isExternalLink = item.href.startsWith("http");
@@ -36,9 +36,10 @@ const Item = ({ item }) => {
 };
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
-  const [show, setShow] = useState<boolean>();
+  const [show, setShow] = useState<boolean>(false);
 
-  const router = useRouter();
+  const router = usePathname();
+
   useEffect(() => {
     setShow(false);
   }, [router]);

@@ -24,11 +24,11 @@ export const ImageBlock = (props: Props) => {
     >
       {data.image && (
         <Img
+          src={data.image.src}
+          alt={data.image.alt}
           className="object-contain"
           size="auto"
-          src={data.image.src}
           radius="rounded-none"
-          alt={data.image.alt}
         />
       )}
       {hasText && (

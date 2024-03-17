@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 type Props = {
   src: string;
   alt: string;
@@ -24,37 +22,35 @@ const sizeMap = {
   [ImageSize.EXTRALARGE]: 800,
 };
 
-// remove w;h;q props from url as assets.tina.io doesn't support those (look into cloudflare hosting)
-const imageLoader = ({ src }) => src;
-
 export function Img(props: Props) {
-  const { src, alt, size, radius, className = "" } = props;
+  const { src, alt = "Image", size, radius, className = "" } = props;
 
   const width = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
   const height = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
 
   if (size === ImageSize.AUTO) {
     return (
-      <Image
-        className={`${className} ${radius}`}
-        loader={imageLoader}
+      <img
         src={src}
-        fill={true}
-        alt={alt || "image-alt"}
-        unoptimized
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        className={`${className} ${radius} absolute inset-0 h-full w-full`}
       />
     );
   }
 
   return (
-    <Image
-      className={`${className} ${radius}`}
-      loader={imageLoader}
+    <img
       src={src}
+      alt={alt}
       width={width}
       height={height}
-      alt={alt || "image-alt"}
-      unoptimized
+      loading="lazy"
+      decoding="async"
+      className={`${className} ${radius} border-transparent`}
     />
   );
 }

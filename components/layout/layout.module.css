@@ -1,6 +1,18 @@
 .bg {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100%;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+  z-index: 10;
+  width: 100%;
 }
