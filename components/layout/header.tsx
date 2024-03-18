@@ -15,6 +15,7 @@ const Item = ({ item }) => {
     return (
       <Link href={item.href} passHref={!!isExternalLink}>
         <button
+          title={item.label}
           aria-label={item.label}
           data-tina-field={tinaField(item)}
           className="bg-white text-primary rounded-full px-12 py-2 font-bold transform hover:scale-105 "
