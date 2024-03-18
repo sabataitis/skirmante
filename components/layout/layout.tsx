@@ -6,6 +6,8 @@ import layoutData from "../../content/global/index.json";
 import styles from "./layout.module.css";
 import { Inter } from "next/font/google";
 
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 type Props = {
   children: React.ReactNode;
 };
@@ -27,6 +29,7 @@ export const Layout = (props: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header data={global?.header} />
+      <GoogleAnalytics gaId="G-5PJWJN8KLT" />
       <main className={inter.className}>
         <div style={cover_image} className={styles.bg}></div>
         <div className={styles.content}>{children}</div>

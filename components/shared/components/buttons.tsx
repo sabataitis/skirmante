@@ -31,7 +31,7 @@ function Button({ button }) {
         href={button.link}
         passHref={isExternalLink(button)}
       >
-        <button data-tina-field={field}>{button.label}</button>
+        <button aria-label={button.label} data-tina-field={field}>{button.label}</button>
       </Link>
     );
   }

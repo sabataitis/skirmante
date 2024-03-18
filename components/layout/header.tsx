@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 
 import { FiMenu } from "react-icons/fi";
 import { Socials } from "../shared";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Item = ({ item }) => {
   const isExternalLink = item.href.startsWith("http");
@@ -15,6 +15,7 @@ const Item = ({ item }) => {
     return (
       <Link href={item.href} passHref={!!isExternalLink}>
         <button
+          aria-label={item.label}
           data-tina-field={tinaField(item)}
           className="bg-white text-primary rounded-full px-12 py-2 font-bold transform hover:scale-105 "
         >

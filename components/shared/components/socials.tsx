@@ -16,22 +16,22 @@ export const Socials = ({
   return (
     <div className="flex sm:flex-row flex-col gap-4">
       {socials && socials.facebook && (
-        <a href={socials.facebook} target="_blank">
+        <a aria-label="Facebook Link" href={socials.facebook} target="_blank">
           <FaFacebook size="24" />
         </a>
       )}
       {socials && socials.twitter && (
-        <a href={socials.twitter} target="_blank">
+        <a aria-label="Twitter Link" href={socials.twitter} target="_blank">
           <FaTwitter size="24" />
         </a>
       )}
       {socials && socials.instagram && (
-        <a href={socials.instagram} target="_blank">
+        <a aria-label="Instagram Link" href={socials.instagram} target="_blank">
           <AiFillInstagram size="24" />
         </a>
       )}
       {socials && socials.linkedin && (
-        <a href={socials.linkedin} target="_blank">
+        <a aria-label="Linkedin Link" href={socials.linkedin} target="_blank">
           <FaLinkedin size="24" />
         </a>
       )}

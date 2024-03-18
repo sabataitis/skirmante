@@ -4,6 +4,8 @@ type Props = {
   size: ImageSize | string;
   radius: Radius | string;
   className?: string;
+  decoding?: "async" | "auto" | "sync";
+  loading?: "eager" | "lazy";
 };
 
 export enum ImageSize {
@@ -23,7 +25,15 @@ const sizeMap = {
 };
 
 export function Img(props: Props) {
-  const { src, alt = "Image", size, radius, className = "" } = props;
+  const {
+    decoding = "async",
+    loading = "lazy",
+    src,
+    alt = "Image",
+    size,
+    radius,
+    className = "",
+  } = props;
 
   const width = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
   const height = sizeMap[size] || sizeMap[ImageSize.MEDIUM];
@@ -35,8 +45,8 @@ export function Img(props: Props) {
         alt={alt}
         width={width}
         height={height}
-        loading="lazy"
-        decoding="async"
+        loading={loading}
+        decoding={decoding}
         className={`${className} ${radius} absolute inset-0 h-full w-full`}
       />
     );
@@ -48,8 +58,8 @@ export function Img(props: Props) {
       alt={alt}
       width={width}
       height={height}
-      loading="lazy"
-      decoding="async"
+      loading={loading}
+      decoding={decoding}
       className={`${className} ${radius} border-transparent`}
     />
   );

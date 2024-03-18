@@ -27,6 +27,8 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
               className={`bg-secondary sm:p-8 p-4`}
               src={data.image.src}
               alt={data.image.alt}
+              loading="eager"
+              decoding="auto"
               radius={data.image.radius}
               size={data.image.size}
             />
@@ -46,9 +48,9 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
             />
           )}
           {data.excerpt && (
-            <h3 className="text-md sm:text-2xl font-extralight">
+            <h2 className="text-md sm:text-2xl font-extralight">
               {data.excerpt}
-            </h3>
+            </h2>
           )}
         </div>
         {data.text && ( <Markdown data={data} field="text" markdown={data.text} />)}
