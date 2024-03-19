@@ -16,7 +16,7 @@ export type SEOProps = {
 
 type Props = {
   children: React.ReactNode;
-  seo: SEOProps;
+  seo?: SEOProps;
 };
 
 const inter = Inter({
