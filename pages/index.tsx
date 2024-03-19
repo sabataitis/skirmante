@@ -1,9 +1,11 @@
 import { InferGetStaticPropsType } from "next";
 import { useTina } from "tinacms/dist/react";
 import { client } from "../tina/__generated__/client";
-import { Layout } from "../components/layout/layout";
+import { Layout, SEOProps } from "../components/layout/layout";
 import { Blocks } from "../components/utils/blocks-renderer";
 import FourOhFour from "./404";
+import Head from "next/head";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
@@ -13,10 +15,21 @@ export default function IndexPage(
   if (!data?.page) {
     return <FourOhFour />;
   }
+
+  const seo: SEOProps = {
+    title: data.page.seo_title,
+    description: data.page.seo_description,
+  };
+
   return (
-    <Layout>
-      <Blocks {...data.page} />
-    </Layout>
+    <>
+      <Head>
+        <GoogleAnalytics gaId="G-5PJWJN8KLT" />
+      </Head>
+      <Layout seo={seo}>
+        <Blocks {...data.page} />
+      </Layout>
+    </>
   );
 }
 

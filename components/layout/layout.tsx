@@ -5,11 +5,18 @@ import { Footer } from "./footer";
 import layoutData from "../../content/global/index.json";
 import styles from "./layout.module.css";
 import { Inter } from "next/font/google";
+import { defaultDescription, defaultTitle } from "../shared";
 
-import { GoogleAnalytics } from '@next/third-parties/google'
+export const runtime = "edge";
+
+export type SEOProps = {
+  title: string;
+  description: string;
+};
 
 type Props = {
   children: React.ReactNode;
+  seo?: SEOProps;
 };
 
 const inter = Inter({
@@ -18,7 +25,13 @@ const inter = Inter({
 });
 
 export const Layout = (props: Props) => {
-  const { children } = props;
+  const {
+    children,
+    seo = {
+      title: defaultTitle,
+      description: defaultDescription,
+    },
+  } = props;
 
   const global = layoutData;
   const cover_image = { backgroundImage: `url(${global?.coverImage || ""})` };
@@ -27,9 +40,10 @@ export const Layout = (props: Props) => {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={seo.description} />
+        <title>{seo.title}</title>
       </Head>
       <Header data={global?.header} />
-      <GoogleAnalytics gaId="G-5PJWJN8KLT" />
       <main className={inter.className}>
         <div style={cover_image} className={styles.bg}></div>
         <div className={styles.content}>{children}</div>

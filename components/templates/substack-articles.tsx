@@ -53,12 +53,16 @@ export const SubstackArticles = () => {
       </div>
       <div className="flex justify-between mt-4">
         <button
+          aria-label="Previous substack article"
+          title="Previous substack article"
           onClick={handlePrev}
           className="bg-primary text-white p-2 rounded-full"
         >
           <FaArrowLeft />
         </button>
         <button
+          aria-label="Next substack article"
+          title="Next substack article"
           onClick={handleNext}
           className="bg-primary text-white p-2 rounded-full"
         >
