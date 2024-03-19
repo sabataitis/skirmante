@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
+export const runtime = 'edge';
+
 const API_URL = "https://skirmantesolutionfocus.substack.com/api/v1/archive";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {

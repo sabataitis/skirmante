@@ -8,6 +8,8 @@ import { Inter } from "next/font/google";
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+export const runtime = 'edge';
+
 type Props = {
   children: React.ReactNode;
 };
