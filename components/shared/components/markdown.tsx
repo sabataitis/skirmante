@@ -18,7 +18,7 @@ const defaults = {
     return <h5 className="text-md sm:text-lg" {...props} />;
   },
   p: (props) => {
-    return <p className="text-lg sm:text-2xl sm:leading-10 my-2" {...props} />;
+    return <p className="text-lg sm:text-2xl sm:leading-10" {...props} />;
   },
   a: (props) => {
     return (
@@ -35,7 +35,7 @@ const defaults = {
   },
   img: (props) => {
     return (
-      <img className="mx-auto max-w-52 h-auto" src={props.url} />
+      <img className="mx-auto max-w-52 h-auto my-4" src={props.url} />
     );
   },
 };

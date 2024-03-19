@@ -4,8 +4,6 @@ import { client } from "../tina/__generated__/client";
 import { Layout, SEOProps } from "../components/layout/layout";
 import { Blocks } from "../components/utils/blocks-renderer";
 import FourOhFour from "./404";
-import Head from "next/head";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
@@ -22,14 +20,9 @@ export default function IndexPage(
   };
 
   return (
-    <>
-      <Head>
-        <GoogleAnalytics gaId="G-5PJWJN8KLT" />
-      </Head>
       <Layout seo={seo}>
         <Blocks {...data.page} />
       </Layout>
-    </>
   );
 }
 

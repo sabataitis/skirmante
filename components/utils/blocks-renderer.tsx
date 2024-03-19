@@ -8,7 +8,7 @@ import { SubstackArticles } from "../templates/substack-articles";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col">
       {props.blocks
         ? props.blocks.map(function (block, i) {
             return (

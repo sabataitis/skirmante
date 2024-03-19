@@ -25,10 +25,12 @@ const textAlignments = {
 };
 
 const HeadingBlock = ({ props }) => {
-  if (!props.card_heading) return <div></div>;
+  if (!props.card_heading) return null;
+
+  const alignment = textAlignments[props.alignment] || textAlignments['start'];
 
   return (
-    <div className={`${textAlignments[props.alignment]}`}>
+    <div className={alignment}>
       <h2
         data-tina-field={tinaField(props, "card_heading")}
         className="text-3xl sm:text-4xl font-bold"
@@ -40,9 +42,12 @@ const HeadingBlock = ({ props }) => {
 };
 
 const ImageContentBlock = ({ props, flow = "row" }) => {
-  const { image, text, order, alignment } = props;
+  const { image, text, order } = props;
 
-  let containerClasses = "flex gap-4" + " " + flexAlignments[alignment] + " ";
+  const alignment = flexAlignments[props.alignment] || flexAlignments['start'];
+  const textAlignment = textAlignments[props.alignment] || textAlignments['start'];
+
+  let containerClasses = "flex gap-4" + " " + alignment + " ";
 
   switch (flow) {
     case "row": {
@@ -71,7 +76,7 @@ const ImageContentBlock = ({ props, flow = "row" }) => {
       )}
       {text && (
         <Markdown
-          className={`flex-1 ${textAlignments[alignment]}`}
+          className={`flex-1 ${textAlignment}`}
           data={props}
           markdown={text}
           field="text"
@@ -82,14 +87,16 @@ const ImageContentBlock = ({ props, flow = "row" }) => {
 };
 
 const ButtonsBlock = ({ props }) => {
-  const { buttons, alignment } = props;
+  const { buttons } = props;
 
   if (!buttons) {
     return null;
   }
 
+  const alignment = flexAlignments[props.alignment] || flexAlignments['start'];
+
   return (
-    <div className={`flex flex-col ${flexAlignments[alignment]}`}>
+    <div className={`flex flex-col ${alignment}`}>
       <Buttons buttons={buttons as Button[]} />
     </div>
   );
