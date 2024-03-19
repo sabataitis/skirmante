@@ -14,7 +14,7 @@ export const Socials = ({
   socials: Partial<Record<MEDIA_SITE, string | null>>;
 }) => {
   return (
-    <div className="flex sm:flex-row flex-col gap-4">
+    <div className="flex flex-wrap gap-4">
       {socials && socials.facebook && (
         <a aria-label="Facebook Link" href={socials.facebook} target="_blank">
           <FaFacebook size="24" />

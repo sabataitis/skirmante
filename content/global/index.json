@@ -36,14 +36,20 @@
       }
     ],
     "socials": {
+      "instagram": "https://www.instagram.com/happierbrainwithskirmante",
       "linkedin": "https://www.linkedin.com/in/skirmante-sabataityte/"
     }
   },
   "footer": {
     "socials": {
+      "instagram": "https://www.instagram.com/happierbrainwithskirmante",
       "linkedin": "linkedin.com/in/skirmante-sabataityte/"
     },
     "references": [
+      {
+        "href": "mailto:skirmantecoach@gmail.com",
+        "label": "skirmantecoach@gmail.com"
+      },
       {
         "href": "privacy",
         "label": "Privacy Statement"
