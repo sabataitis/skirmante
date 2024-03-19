@@ -1,11 +1,10 @@
 {
-  "name": "@tinacms/starter",
-  "version": "0.1.0",
+  "name": "skirmante",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
-    "nextbuild": "next build",
     "start": "tinacms build && next start",
     "export": "npm run build && next export",
     "lint": "eslint . --ext .ts,.tsx"

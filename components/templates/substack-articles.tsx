@@ -14,7 +14,7 @@ export const SubstackArticles = () => {
         const data = (await res.json()) || [];
         setArticles(data);
       } catch (e) {
-        console.error(e);
+        setArticles([])
       }
     };
 
